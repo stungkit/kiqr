@@ -12,7 +12,7 @@ Kiqr
 
 #### Requirements
 
-- Ruby 3.0 or higher
+- Ruby 2.5 or higher
 - Rails 6.1.4 or higher
 - A [Paddle.com](https://paddle.com) vendor account to enable subscriptions.
 
