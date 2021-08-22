@@ -28,16 +28,23 @@ Head over to [kiqr_starter](https://github.com/kiqr/kiqr_starter) and read the i
 
 ### Option B: Adding Kiqr to an existing application
 
-We recommend you to start with a fresh install of Rails to avoid code conflicts. However, Kiqr is an isolated engine with namespaced classes so if you know what you're doing, just try it out!
+Once you have solidified your understanding of Devise and it's authentication mechanisms, we assure you Kiqr will be very pleasant to work with. 😃
 
 ##### Add the following line to your Gemfile:
 ```ruby
+gem 'devise' # Authentication with Devise
 gem 'kiqr'
 ```
 
 ##### Install dependencies
 ```bash
 $ bundle install
+```
+
+##### Install Devise and generate a model
+```bash
+$ bundle exec rails generate devise::install
+$ bundle exec rails generate devise User
 ```
 
 ## Contributing
