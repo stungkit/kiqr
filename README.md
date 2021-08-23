@@ -71,13 +71,24 @@ current_account
 $ rails generate model project account:references
 ```
 
-### Views
+## Views
 A list of important Kiqr views and endpoints:
 
 | Helper method | Method | URI Pattern | Description |
 | --- | --- | --- | --- |
 | `accounts_path` | GET | /accounts | Shows a list of accounts available for the user |
 | `account_switch_path(:id)` | GET | /accounts/:id/switch | Let the user switch to another account |
+
+## Templating
+
+##### Generate a dropdown menu with links available for a signed in user:
+```html+erb
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<% kiqr_user_dropdown.each do |link| %>
+  <%= link_to link[:label], link[:path], class: 'dropdown-item' %>
+<% end %>
+</div>
+```
 
 ## Contributing
 Contribution directions go here.
