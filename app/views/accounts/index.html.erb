@@ -1,0 +1,7 @@
+<h2>Select an account</h2>
+
+<ul>
+<%- @accounts.each do |account| %>
+  <li><%= link_to account.name, account_switch_path(account) %></li>
+<% end %>
+</ul>
