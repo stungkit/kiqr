@@ -8,10 +8,13 @@ module Kiqr
       g.helper false
     end
 
-    initializer 'kiqr.autoload' do |app|
+    initializer 'kiqr.setup' do |app|
       # Make Kiqr controller helpers available in all app controllers.
       ActionController::Base.include(Kiqr::Controllers::SetCurrentRequestDetails)
       ActionController::Base.include(Kiqr::Controllers::CurrentHelpers)
+      ActionController::Base.include(Kiqr::Controllers::FrontendHelpers)
+
+      Kiqr.add_module 'accounts', label: 'Switch account', route: :accounts, display_at: :user_dropdown
     end
   end
 end
