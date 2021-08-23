@@ -7,5 +7,10 @@ module Kiqr
       g.assets false
       g.helper false
     end
+
+    initializer 'kiqr.autoload' do |app|
+      # Make Kiqr controller helpers available in all app controllers.
+      ActionController::Base.include(Kiqr::Controllers::SetCurrentRequestDetails)
+    end
   end
 end

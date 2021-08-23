@@ -1,5 +1,7 @@
 module CurrentHelper
   def current_account
-    Account.new
+    return if Current.account.blank?
+
+    Current.account
   end
 end
