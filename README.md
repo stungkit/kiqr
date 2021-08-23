@@ -90,7 +90,7 @@ A list of all available Kiqr endpoints:
 | Prefix | Method | URI | Controller#Action | Description |
 | --- | --- | --- | --- | --- |
 | `accounts_path` | GET | /accounts | accounts#index | List accounts available for the signed in user |
-| `account_switch_path(:id)` | GET | /accounts/:id/switch | accounts#switch | Let the user switch to another account |
+| `switch_account_path(:id)` | GET | /accounts/:id/switch | accounts#switch | Let the user switch to another account |
 
 ## Contributing
 Contribution directions go here.

@@ -6,6 +6,6 @@ class KiqrController < ApplicationController
   end
 
   def after_account_created_path(*)
-    account_switch_path(@account)
+    switch_account_path(@account)
   end
 end

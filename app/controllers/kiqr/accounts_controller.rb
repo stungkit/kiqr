@@ -13,7 +13,8 @@ module Kiqr
       @account.members.new(user: current_user)
 
       if @account.save
-        redirect_to after_account_created_path(@account), notice: 'Your new account was successfully created!'
+        flash[:notice] = I18n.t('kiqr.accounts.created', account_name: @account.name)
+        redirect_to after_account_created_path(@account)
       else
         respond_to do |format|
           format.turbo_stream { render turbo_stream: turbo_stream.replace('new_account', partial: 'form') }
@@ -23,9 +24,10 @@ module Kiqr
     end
 
     def switch
-      @account = current_user.accounts.find(params[:account_id])
+      @account = current_user.accounts.find(params[:id])
       current_user.update(account: @account)
 
+      flash[:notice] = I18n.t('kiqr.accounts.switched', account_name: @account.name)
       redirect_to after_account_switched_path(@account), fallback_location: root_path
     end
 
