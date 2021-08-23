@@ -71,6 +71,13 @@ current_account
 $ rails generate model project account:references
 ```
 
+### Views
+A list of important Kiqr views and endpoints:
+
+| Helper method | Method | URI Pattern | Description |
+| --- | --- | --- | --- |
+| `accounts_path` | GET | /accounts | Shows a list of accounts available for the user |
+| `account_switch_path(:id)` | GET | /accounts/:id/switch | Let the user switch to another account |
 
 ## Contributing
 Contribution directions go here.
