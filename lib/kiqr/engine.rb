@@ -8,7 +8,7 @@ module Kiqr
       g.helper false
     end
 
-    initializer 'kiqr.setup' do |app|
+    initializer 'kiqr.setup' do
       # Make Kiqr controller helpers available in all app controllers.
       ActionController::Base.include(Kiqr::Controllers::SetCurrentRequestDetails)
       ActionController::Base.include(Kiqr::Controllers::CurrentHelpers)

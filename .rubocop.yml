@@ -20,6 +20,9 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Style/Documentation:
   Enabled: false
+Style/MutableConstant:
+  Exclude:
+    - lib/kiqr.rb
 Layout/LineLength:
   Max: 150
   Exclude:

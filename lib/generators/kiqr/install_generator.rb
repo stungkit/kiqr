@@ -9,7 +9,7 @@ module Kiqr
       include Rails::Generators::ResourceHelpers
       include Kiqr::Generators::OrmHelpers
 
-      source_root File.expand_path('../../templates/migrations', __FILE__)
+      source_root File.expand_path('../templates/migrations', __dir__)
 
       desc 'Generate migrations and prepare the user model.'
 
