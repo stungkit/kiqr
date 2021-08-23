@@ -46,17 +46,6 @@ Replace **MODEL** with your Devise user model.
 $ rails generate kiqr::install MODEL
 ```
 
-## Controllers
-
-### Securing controllers
-To set up a controller with user authentication, just add this before_action (assuming you're using Devise and your model is 'User'):
-```ruby
-before_action :authenticate_user!
-```
-
-### Other controller filters and helpers
-You'll find more filters and helpers below when browsing the documentation. All Kiqr helpers will automatically be accessible from your ApplicationController. 
-
 ## Models
 
 ### Account
@@ -71,17 +60,22 @@ current_account
 $ rails generate model project account:references
 ```
 
+## Controllers
+
+### Securing controllers
+To set up a controller with user authentication, just add this before_action (assuming you're using Devise and your model is 'User'):
+```ruby
+before_action :authenticate_user!
+```
+
+### Other controller filters and helpers
+You'll find more filters and helpers below when browsing the documentation. All Kiqr helpers will automatically be accessible from your ApplicationController. 
+
 ## Views
-A list of important Kiqr views and endpoints:
 
-| Helper method | Method | URI Pattern | Description |
-| --- | --- | --- | --- |
-| `accounts_path` | GET | /accounts | Shows a list of accounts available for the user |
-| `account_switch_path(:id)` | GET | /accounts/:id/switch | Let the user switch to another account |
+### Template helpers
 
-## Templating
-
-##### Generate a dropdown menu with links available for a signed in user:
+#### Generate a dropdown menu with links available to a signed in user:
 ```html+erb
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 <% kiqr_user_dropdown.each do |link| %>
@@ -89,6 +83,14 @@ A list of important Kiqr views and endpoints:
 <% end %>
 </div>
 ```
+
+## Routes
+A list of all available Kiqr endpoints:
+
+| Prefix | Method | URI | Controller#Action | Description |
+| --- | --- | --- | --- | --- |
+| `accounts_path` | GET | /accounts | accounts#index | List accounts available for the signed in user |
+| `account_switch_path(:id)` | GET | /accounts/:id/switch | accounts#switch | Let the user switch to another account |
 
 ## Contributing
 Contribution directions go here.
