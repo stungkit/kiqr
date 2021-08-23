@@ -55,6 +55,10 @@ Kiqr will create a default account for each user that signs up within your appli
 ```ruby
 current_account
 ```
+#### Generate a new resource
+```bash
+$ rails generate model project account:references
+```
 
 
 ## Contributing
