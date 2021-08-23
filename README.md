@@ -23,27 +23,39 @@ _Kiqr comes bundled with some third-party Ruby Gems. These are all well tested a
 
 
 ## Installation
-### Option A: Use Kiqr Starter
+### Option A: Use Kiqr Starter (easy)
 Head over to [kiqr_starter](https://github.com/kiqr/kiqr_starter) and read the instructions there.
 
-### Option B: Adding Kiqr to an existing application
+### Option B: Adding Kiqr to an existing application (advanced)
 
-Kiqr requires **Devise**...
+Kiqr requires a User model to be present before beeing installed. [Devise](https://github.com/heartcombo/devise) or another authentication gem is recommended. 
 
-##### Add the following line to your Gemfile:
+#### Add the following line to your Gemfile:
 ```ruby
 gem 'kiqr'
 ```
 
-##### Install dependencies
+#### Install dependencies
 ```bash
 $ bundle install
 ```
 
-##### Install Kiqr and generate migrations
+#### Run the generators
+Replace **MODEL** with your Devise user model.
 ```bash
-$ bundle exec rails generate kiqr::install MODEL
+$ rails generate kiqr::install MODEL
 ```
+
+## Models
+
+### Account
+Kiqr will create a default account for each user that signs up within your application. An account can have multiple users associated with it and users can have multiple accounts. We recommend you to put all your resources under accounts instead of users. This is to support multi-tenancy and team accounts.
+
+#### For the current signed-in account, this helper is available:
+```ruby
+current_account
+```
+
 
 ## Contributing
 Contribution directions go here.
