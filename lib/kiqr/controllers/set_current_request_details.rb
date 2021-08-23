@@ -3,8 +3,8 @@ module Kiqr
     module SetCurrentRequestDetails
       extend ActiveSupport::Concern
 
-      included do |base|
-        before_action :set_current_request_details #  if base < ActionController::Base
+      included do
+        before_action :set_current_request_details
       end
 
       def set_current_request_details

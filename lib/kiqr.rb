@@ -4,6 +4,7 @@ require 'kiqr/engine'
 module Kiqr
   module Controllers
     autoload :SetCurrentRequestDetails, 'kiqr/controllers/set_current_request_details'
+    autoload :CurrentHelpers, 'kiqr/controllers/current_helpers'
   end
 
   module Models

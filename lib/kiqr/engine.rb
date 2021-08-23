@@ -11,6 +11,7 @@ module Kiqr
     initializer 'kiqr.autoload' do |app|
       # Make Kiqr controller helpers available in all app controllers.
       ActionController::Base.include(Kiqr::Controllers::SetCurrentRequestDetails)
+      ActionController::Base.include(Kiqr::Controllers::CurrentHelpers)
     end
   end
 end
