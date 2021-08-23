@@ -46,6 +46,17 @@ Replace **MODEL** with your Devise user model.
 $ rails generate kiqr::install MODEL
 ```
 
+## Controllers
+
+### Securing controllers
+To set up a controller with user authentication, just add this before_action (assuming you're using Devise and your model is 'User'):
+```ruby
+before_action :authenticate_user!
+```
+
+### Other controller filters and helpers
+You'll find more filters and helpers below when browsing the documentation. All Kiqr helpers will automatically be accessible from your ApplicationController. 
+
 ## Models
 
 ### Account
