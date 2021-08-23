@@ -26,3 +26,5 @@ Style/MutableConstant:
 Layout/LineLength:
   Max: 150
   Exclude:
+Metrics/AbcSize:
+  Max: 20
