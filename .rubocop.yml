@@ -15,7 +15,6 @@ AllCops:
     - 'config/initializers/devise.rb'
     - 'config/initializers/simple_form.rb'
     - 'config/initializers/simple_form_bootstrap.rb'
-
 Style/FrozenStringLiteralComment:
   Enabled: false
 Style/Documentation:
@@ -27,4 +26,9 @@ Layout/LineLength:
   Max: 150
   Exclude:
 Metrics/AbcSize:
-  Max: 20
+  Max: 25
+Metrics/MethodLength:
+  Max: 15
+Style/ClassVars:
+  Exclude:
+    - 'lib/kiqr.rb'
