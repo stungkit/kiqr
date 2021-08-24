@@ -10,12 +10,6 @@ module Kiqr
 
         validates :name, presence: true
       end
-
-      # Titleize name
-      def name=(name)
-        # .to_s protects against nils
-        write_attribute(:name, name.to_s.titleize.strip)
-      end
     end
   end
 end
