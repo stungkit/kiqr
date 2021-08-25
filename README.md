@@ -46,7 +46,7 @@ $ rails generate kiqr::install user
 
 ## The account model
 
-Kiqr will create a default account for each user that signs up within your application. An account can have multiple users associated with it and users can have multiple accounts.
+Kiqr will create a default account for each user that signs up within your application. An account can have multiple users associated with it and a user can have multiple accounts.
 
 #### For the current signed-in account, this helper is available globally:
 ```ruby
