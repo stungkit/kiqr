@@ -19,8 +19,7 @@ Kiqr
 #### Included dependencies
 
 _Kiqr comes bundled with some third-party Ruby Gems. These are all well tested and receives regular security updates allowing you to focus on your own code:_
-- [paddle_pay](https://github.com/devmindo/paddle_pay) - A Ruby wrapper for the Paddle.com API
-
+- [dry-configurable](https://github.com/dry-rb/dry-configurable) - A simple mixin to make Ruby classes configurable
 
 ## Installation
 ### Option A: Use Kiqr Starter (easy)
@@ -41,20 +40,28 @@ $ bundle install
 ```
 
 #### Run the generators
-Replace **MODEL** with your Devise user model.
 ```bash
-$ rails generate kiqr::install MODEL
+$ rails generate kiqr::install user
 ```
 
-## Models
+## The account model
 
-### Account
-Kiqr will create a default account for each user that signs up within your application. An account can have multiple users associated with it and users can have multiple accounts. We recommend you to put all your resources under accounts instead of users. This is to support multi-tenancy and team accounts.
+Kiqr will create a default account for each user that signs up within your application. An account can have multiple users associated with it and users can have multiple accounts.
 
-#### For the current signed-in account, this helper is available:
+#### For the current signed-in account, this helper is available globally:
 ```ruby
 current_account
 ```
+
+#### Switching between accounts
+Add ```accounts_path``` to your navigation to link to the account switching page, or when building a customized account switcher, redirect your user to:
+```ruby
+switch_account_path(:id)
+```
+
+## Models
+We recommend you to put all your resources under accounts instead of users. This is to support multi-tenancy and team accounts.
+
 #### Generate a new resource
 ```bash
 $ rails generate model project account:references
@@ -68,29 +75,26 @@ To set up a controller with user authentication, just add this before_action (as
 before_action :authenticate_user!
 ```
 
-### Other controller filters and helpers
-You'll find more filters and helpers below when browsing the documentation. All Kiqr helpers will automatically be accessible from your ApplicationController. 
-
 ## Views
 
-### Template helpers
+### Snippets & examples
 
-#### Generate a dropdown menu with links available to a signed in user:
+#### Account switcher dropdown
 ```html+erb
-<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<% kiqr_user_dropdown.each do |link| %>
-  <%= link_to link[:label], link[:path], class: 'dropdown-item' %>
+<div class="dropdown-menu">
+<% current_user.accounts.each do |account| %>
+  <%= link_to account.name, switch_account_path(account), method: :patch %>
 <% end %>
 </div>
 ```
 
 ## Routes
-A list of all available Kiqr endpoints:
+A list of all reserved Kiqr endpoints:
 
 | Prefix | Method | URI | Controller#Action | Description |
 | --- | --- | --- | --- | --- |
 | `accounts_path` | GET | /accounts | accounts#index | List accounts available for the signed in user |
-| `switch_account_path(:id)` | GET | /accounts/:id/switch | accounts#switch | Let the user switch to another account |
+| `switch_account_path(:id)` | PATCH/GET | /accounts/:id/switch | accounts#switch | Let the user switch to another account |
 
 ## Contributing
 Contribution directions go here.
