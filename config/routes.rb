@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope module: 'kiqr' do
     resources :accounts do
       member do
-        get :switch
+        match :switch, via: %i[get patch]
       end
     end
 

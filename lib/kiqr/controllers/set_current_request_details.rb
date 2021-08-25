@@ -11,19 +11,21 @@ module Kiqr
         Current.user_agent = request.user_agent
         Current.ip_address = request.ip
         Current.user ||= current_user
-        Current.account ||= fetch_account_from_current_user
+
+        # Account may already be set by the AccountMiddleware
+        Current.account ||= account_from_session || fallback_account
       end
 
-      def fetch_account_from_current_user
-        return unless user_signed_in?
+      def account_from_session
+        return unless user_signed_in? && session[:account_id].present?
 
-        Current.user.account || fallback_account
+        current_user.accounts.find_by(id: session[:account_id])
       end
 
       def fallback_account
         return unless user_signed_in?
 
-        current_user.accounts.order(created_at: :desc).first || current_user.create_default_account
+        current_user.account || current_user.create_default_account
       end
     end
   end

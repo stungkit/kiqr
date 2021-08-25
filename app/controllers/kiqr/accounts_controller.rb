@@ -25,10 +25,9 @@ module Kiqr
 
     def switch
       @account = current_user.accounts.find(params[:id])
-      current_user.update(account: @account)
-
+      session[:account_id] = @account.id
       flash[:notice] = I18n.t('kiqr.accounts.switched', account_name: @account.name)
-      redirect_to after_account_switched_path(@account), fallback_location: root_path
+      redirect_to after_account_switched_path(@account)
     end
 
     private

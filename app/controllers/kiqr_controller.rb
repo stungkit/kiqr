@@ -1,11 +1,11 @@
-class KiqrController < Kiqr.parent_controller.constantize
+class KiqrController < Kiqr.config.parent_controller.constantize
   before_action :authenticate_user!
 
-  def after_account_switched_path(*)
+  def after_account_switched_path(_account)
     root_path
   end
 
-  def after_account_created_path(*)
-    switch_account_path(@account)
+  def after_account_created_path(account)
+    switch_account_path(account)
   end
 end
