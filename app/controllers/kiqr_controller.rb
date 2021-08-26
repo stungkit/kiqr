@@ -8,4 +8,8 @@ class KiqrController < Kiqr.config.parent_controller.constantize
   def after_account_created_path(account)
     switch_account_path(account)
   end
+
+  def after_account_setup_path(_account)
+    root_path
+  end
 end

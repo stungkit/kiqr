@@ -12,6 +12,7 @@ module ActionDispatch
           resources :accounts, path: path_names[:accounts] do
             member do
               match :switch, via: %i[get patch]
+              get :setup
             end
           end
 

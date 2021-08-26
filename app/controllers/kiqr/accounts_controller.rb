@@ -1,6 +1,7 @@
 module Kiqr
   class AccountsController < KiqrController
-    before_action :set_account, only: %i[edit update]
+    before_action :set_account, only: %i[edit update setup]
+    skip_before_action :redirect_to_account_setup
 
     def index
       @accounts = current_user.accounts
@@ -25,16 +26,22 @@ module Kiqr
       end
     end
 
+    def setup
+      redirect_to edit_account_path(@account) unless @account.pending_setup?
+    end
+
     def edit; end
 
     def update
+      is_setting_up = @account.pending_setup?
+
       if @account.update(account_params)
-        flash[:notice] = I18n.t('kiqr.settings.updated')
-        redirect_to edit_account_path(@account)
+        flash[:notice] = (is_setting_up ? I18n.t('kiqr.accounts.after_setup') : I18n.t('kiqr.accounts.updated'))
+        redirect_to(is_setting_up ? after_account_setup_path(@account) : edit_account_path(@account))
       else
         respond_to do |format|
           format.turbo_stream { render turbo_stream: turbo_stream.replace("edit_account_#{@account.id}", partial: 'form') }
-          format.html { render :edit }
+          format.html { render(is_setting_up? ? :setup : :edit) }
         end
       end
     end

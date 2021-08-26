@@ -12,6 +12,7 @@ module Kiqr
     autoload :CurrentHelpers, 'kiqr/controllers/current_helpers'
     autoload :FrontendHelpers, 'kiqr/controllers/frontend_helpers'
     autoload :SetCurrentRequestDetails, 'kiqr/controllers/set_current_request_details'
+    autoload :ForceAccountSetup, 'kiqr/controllers/force_account_setup'
   end
 
   module Models

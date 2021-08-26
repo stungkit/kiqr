@@ -8,5 +8,5 @@ en:
     accounts:
       created: Your account was successfully created!
       switched: You are now managing account %{account_name}.
-    settings:
-      updated: Settings successfully updated!
+      after_setup: Your new account has been setup successfully!
+      updated: Settings successfully updated!      
