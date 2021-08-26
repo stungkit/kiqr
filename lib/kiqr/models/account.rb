@@ -9,6 +9,7 @@ module Kiqr
         belongs_to :owner, class_name: 'User'
 
         validates :name, presence: true
+        validates :billing_email, presence: true
       end
     end
   end

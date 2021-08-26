@@ -10,7 +10,7 @@ module Kiqr
       end
 
       def current_account
-        Current.account
+        @current_account || Current.account
       end
 
       def member_of_account?

@@ -1,5 +1,12 @@
 en:
+  helpers:
+    submit:
+      account:
+        create: Create account
+        update: Update account
   kiqr:
     accounts:
       created: Your account was successfully created!
       switched: You are now managing account %{account_name}.
+    settings:
+      updated: Settings successfully updated!

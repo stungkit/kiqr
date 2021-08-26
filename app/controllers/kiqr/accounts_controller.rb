@@ -1,5 +1,7 @@
 module Kiqr
   class AccountsController < KiqrController
+    before_action :set_account, only: %i[edit update]
+
     def index
       @accounts = current_user.accounts
     end
@@ -23,6 +25,20 @@ module Kiqr
       end
     end
 
+    def edit; end
+
+    def update
+      if @account.update(account_params)
+        flash[:notice] = I18n.t('kiqr.settings.updated')
+        redirect_to edit_account_path(@account)
+      else
+        respond_to do |format|
+          format.turbo_stream { render turbo_stream: turbo_stream.replace("edit_account_#{@account.id}", partial: 'form') }
+          format.html { render :edit }
+        end
+      end
+    end
+
     def switch
       @account = current_user.accounts.find(params[:id])
       session[:account_id] = @account.id
@@ -32,8 +48,13 @@ module Kiqr
 
     private
 
+    def set_account
+      @account = current_user.accounts.find(params[:id])
+      @current_account = @account
+    end
+
     def account_params
-      params.require(:account).permit(:name)
+      params.require(:account).permit(:name, :billing_email)
     end
   end
 end

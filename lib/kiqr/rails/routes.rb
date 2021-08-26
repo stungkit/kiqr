@@ -15,6 +15,9 @@ module ActionDispatch
             end
           end
 
+          # get 'settings', to: 'settings#edit'
+          # patch 'settings', to: 'settings#update'
+
           # account/:id/settings
           # account/:id/members
           # account/:id/members/invite
