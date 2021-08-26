@@ -3,6 +3,7 @@ require 'kiqr/engine'
 require 'kiqr/rails/routes'
 
 require 'dry-configurable'
+require 'simple_form'
 require 'valid_email2'
 
 module Kiqr

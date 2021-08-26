@@ -21,6 +21,7 @@ Kiqr
 _Kiqr comes bundled with some third-party Ruby Gems. These are all well tested and receives regular security updates allowing you to focus on your own code:_
 - [dry-configurable](https://github.com/dry-rb/dry-configurable) - A simple mixin to make Ruby classes configurable
 - [valid_email2](https://github.com/micke/valid_email2) - ActiveModel validation for email. Including MX lookup and disposable email blacklist
+- [simple_form](https://github.com/heartcombo/simple_form) - Simple generation of forms that you can configure in your template
 
 ## Installation
 ### Option A: Use Kiqr Starter (easy)
