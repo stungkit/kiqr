@@ -89,9 +89,18 @@ before_action :authenticate_user!
 ```
 
 ## Routes
-A list of all reserved Kiqr endpoints:
 
-| Prefix | Method | URI | Controller#Action | Description |
+### Configuring routes
+Kiqr ships with default routes. If you need to customize them, you should probably be able to do it through the kiqr_routes method. It accepts several options like :path_names and so on, including the possibility to change path names for I18n:
+
+#### Change paths names for Kiqr endpoints
+```ruby
+kiqr_routes path_names: { accounts: 'organizations' }
+```
+
+#### A list of all reserved Kiqr endpoints:
+
+| Prefix | Method | Default URI | Controller#Action | Description |
 | --- | --- | --- | --- | --- |
 | `accounts_path` | GET | /accounts | accounts#index | List accounts available for the signed in user |
 | `switch_account_path(:id)` | PATCH/GET | /accounts/:id/switch | accounts#switch | Let the user switch to another account |

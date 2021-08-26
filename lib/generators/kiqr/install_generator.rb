@@ -11,7 +11,7 @@ module Kiqr
 
       source_root File.expand_path('../templates/migrations', __dir__)
 
-      desc 'Generate migrations and prepare the user model.'
+      desc 'Generate migrations, routes and prepare the user model.'
 
       def copy_migrations
         unless model_exists?
@@ -33,6 +33,10 @@ module Kiqr
         indent_depth = class_path.size - 1
         content = content.split("\n").map { |line| '  ' * indent_depth + line }.join("\n") << "\n"
         inject_into_class(model_path, class_path.last, content)
+      end
+
+      def add_kiqr_routes
+        route 'kiqr_routes'
       end
 
       private

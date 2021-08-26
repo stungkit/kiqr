@@ -1,5 +1,6 @@
 require 'kiqr/version'
 require 'kiqr/engine'
+require 'kiqr/rails/routes'
 
 require 'dry-configurable'
 
