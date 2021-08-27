@@ -4,37 +4,33 @@ module ActionDispatch
   module Routing
     class Mapper
       def kiqr_routes(options = {})
-        options[:path_names] ||= {}
-        options[:path_names][:accounts] ||= 'accounts'
-        path_names = options[:path_names]
+        options[:path] ||= 'account'
 
-        scope module: 'kiqr' do
-          resources :accounts, path: path_names[:accounts] do
-            member do
-              match :switch, via: %i[get patch]
-              get :setup
-            end
-          end
-
-          # get 'settings', to: 'settings#edit'
-          # patch 'settings', to: 'settings#update'
-
-          # account/:id/settings
-          # account/:id/members
-          # account/:id/members/invite
-          # account/:id/members/invite/:id
-          # account/:id/members/:id
-          # billing
-          # billing/subscription/cancel
-          # billing/change-plan
-          # billing/change-plan/:id
-          # billing/receipts
-          # billing/select-plan
-          # billing/select-plan/pending
-          # pay/webhooks/braintree
-          # pay/webhooks/paddle
-          # pay/webhooks/stripe
+        kiqr_scope(options) do
+          kiqr_accounts(options)
+          kiqr_members(options)
+          kiqr_account_switcher(options)
         end
+      end
+
+      protected
+
+      def kiqr_scope(options, &block)
+        scope options[:path], module: 'kiqr', &block
+      end
+
+      def kiqr_accounts(_options)
+        resource :account, only: %i[new create edit update], path: '' do
+          get :setup, as: :setup
+        end
+      end
+
+      def kiqr_account_switcher(_options)
+        match 'switch/:id', via: %i[get patch], to: 'accounts#switch', as: :switch_account
+      end
+
+      def kiqr_members(_options)
+        resources :members
       end
     end
   end

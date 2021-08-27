@@ -27,8 +27,8 @@ module Kiqr
   # in the initialization process and should be set to a string.
   setting :parent_controller, 'ApplicationController'
 
-  # Specify settings for email validations. Available options can 
-  # be found in the documentation for 'valid_email2' gem at: 
+  # Specify settings for email validations. Available options can
+  # be found in the documentation for 'valid_email2' gem at:
   # https://github.com/micke/valid_email2
   setting :email_validations, { mx: true }
 end

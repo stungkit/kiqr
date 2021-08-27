@@ -12,4 +12,14 @@ class KiqrController < Kiqr.config.parent_controller.constantize
   def after_account_setup_path(_account)
     root_path
   end
+
+  private
+
+  def set_account
+    @account = current_account
+  end
+
+  def account_params
+    params.require(:account).permit(:name, :billing_email)
+  end
 end

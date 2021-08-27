@@ -4,6 +4,8 @@ module Kiqr
       extend ActiveSupport::Concern
 
       included do
+        model_name.instance_variable_set(:@route_key, 'account')
+
         has_many :members
         has_many :users, through: :members
         belongs_to :owner, class_name: 'User'

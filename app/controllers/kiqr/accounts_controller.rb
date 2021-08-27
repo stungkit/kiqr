@@ -27,7 +27,7 @@ module Kiqr
     end
 
     def setup
-      redirect_to edit_account_path(@account) unless @account.pending_setup?
+      redirect_to edit_account_path unless @account.pending_setup?
     end
 
     def edit; end
@@ -37,7 +37,7 @@ module Kiqr
 
       if @account.update(account_params)
         flash[:notice] = (is_setting_up ? I18n.t('kiqr.accounts.after_setup') : I18n.t('kiqr.accounts.updated'))
-        redirect_to(is_setting_up ? after_account_setup_path(@account) : edit_account_path(@account))
+        redirect_to(is_setting_up ? after_account_setup_path(@account) : edit_account_path)
       else
         respond_to do |format|
           format.turbo_stream { render turbo_stream: turbo_stream.replace("edit_account_#{@account.id}", partial: 'form') }
@@ -51,17 +51,6 @@ module Kiqr
       session[:account_id] = @account.id
       flash[:notice] = I18n.t('kiqr.accounts.switched', account_name: @account.name)
       redirect_to after_account_switched_path(@account)
-    end
-
-    private
-
-    def set_account
-      @account = current_user.accounts.find(params[:id])
-      @current_account = @account
-    end
-
-    def account_params
-      params.require(:account).permit(:name, :billing_email)
     end
   end
 end

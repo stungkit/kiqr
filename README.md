@@ -97,15 +97,18 @@ Kiqr ships with default routes. If you need to customize them, you should probab
 
 #### Change paths names for Kiqr endpoints
 ```ruby
-kiqr_routes path_names: { accounts: 'organizations' }
+kiqr_routes path: 'organization'
 ```
 
-#### A list of all reserved Kiqr endpoints:
+#### A list of all available default views:
 
 | Prefix | Method | Default URI | Controller#Action | Description |
 | --- | --- | --- | --- | --- |
-| `accounts_path` | GET | /accounts | accounts#index | List accounts available for the signed in user |
-| `switch_account_path(:id)` | PATCH/GET | /accounts/:id/switch | accounts#switch | Let the user switch to another account |
+| `new_account_path` | GET | /account/new | accounts#new | Create an account |
+| `edit_account_path` | GET | /account/edit | accounts#edit | Account settings |
+| `setup_account_path` | GET | /account/setup | accounts#setup | Setup the default account |
+| `switch_account_path(:id)` | GET/PATCH | /accounts/:id/switch | accounts#switch | Switch to another account |
+| `members_path` | GET | /account/members | members#index | List of account members (users) |
 
 ## Contributing
 Contribution directions go here.

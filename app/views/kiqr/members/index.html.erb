@@ -1,0 +1,22 @@
+<h2>Account members</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+    <tr>
+      <td><%= member.user.email %></td>
+      <td>Member</td>
+      <td>
+        <%= link_to 'Edit', edit_member_path(member) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

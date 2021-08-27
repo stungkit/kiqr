@@ -10,7 +10,7 @@ module Kiqr
       def redirect_to_account_setup
         return unless user_signed_in?
 
-        redirect_to setup_account_path(current_account) if current_account.pending_setup?
+        redirect_to setup_account_path if current_account.pending_setup?
       end
     end
   end
