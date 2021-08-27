@@ -2,6 +2,7 @@ require 'kiqr/version'
 require 'kiqr/engine'
 require 'kiqr/rails/routes'
 
+require 'cancan'
 require 'dry-configurable'
 require 'simple_form'
 require 'valid_email2'
@@ -21,6 +22,8 @@ module Kiqr
     autoload :Member, 'kiqr/models/member'
     autoload :User, 'kiqr/models/user'
   end
+
+  autoload :Ability, 'kiqr/ability'
 
   # The parent controller all Kiqr controllers inherits from.
   # Defaults to ApplicationController. This should be set early
