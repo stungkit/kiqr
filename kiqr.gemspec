@@ -18,7 +18,6 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.5'
 
   spec.add_dependency 'dry-configurable'
-  spec.add_dependency 'rails', '~> 6.1.4'
   spec.add_dependency 'simple_form'
   spec.add_dependency 'valid_email2'
 
