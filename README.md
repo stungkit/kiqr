@@ -95,20 +95,20 @@ before_action :authenticate_user!
 ### Configuring routes
 Kiqr ships with default routes. If you need to customize them, you should probably be able to do it through the kiqr_routes method. It accepts several options like :path_names and so on, including the possibility to change path names for I18n:
 
-#### Change paths names for Kiqr endpoints
+To rename the ```/account``` scope to ```/organization``` you can use the ```path:``` option:
 ```ruby
 kiqr_routes path: 'organization'
 ```
 
 #### A list of all available default views:
 
-| Prefix | Method | Default URI | Controller#Action | Description |
-| --- | --- | --- | --- | --- |
-| `new_account_path` | GET | /account/new | accounts#new | Create an account |
-| `edit_account_path` | GET | /account/edit | accounts#edit | Account settings |
-| `setup_account_path` | GET | /account/setup | accounts#setup | Setup the default account |
-| `switch_account_path(:id)` | GET/PATCH | /accounts/:id/switch | accounts#switch | Switch to another account |
-| `members_path` | GET | /account/members | members#index | List of account members (users) |
+| Prefix | Method | Default URI | Description |
+| --- | --- | --- | --- |
+| `new_account_path` | GET | /account/new | Create an account |
+| `edit_account_path` | GET | /account/edit | Account settings |
+| `setup_account_path` | GET | /account/setup | Setup the default account |
+| `switch_account_path(:id)` | GET/PATCH | /accounts/:id/switch | Switch to another account |
+| `members_path` | GET | /account/members | List of account members (users) |
 
 ## Contributing
 Contribution directions go here.
