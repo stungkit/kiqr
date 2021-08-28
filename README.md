@@ -95,6 +95,12 @@ kiqr_routes path: 'organization'
 | `switch_account_path(:id)` | GET/PATCH | /account/:id/switch | Switch to another account |
 | `members_path` | GET | /account/members | List of account members (users) |
 
+## Use with ``turbo-rails``
+Add the following to your Gemfile until Responders gem is published with version >= 3.0.2. 
+```ruby
+gem 'responders', git: 'https://github.com/heartcombo/responders'
+```
+
 ## Contributing
 Contribution directions go here.
 
