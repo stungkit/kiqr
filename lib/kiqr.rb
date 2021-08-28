@@ -24,6 +24,7 @@ module Kiqr
   end
 
   autoload :Ability, 'kiqr/ability'
+  autoload :Current, 'kiqr/current'
 
   # The parent controller all Kiqr controllers inherits from.
   # Defaults to ApplicationController. This should be set early

@@ -8,12 +8,12 @@ module Kiqr
       end
 
       def set_current_request_details
-        Current.user_agent = request.user_agent
-        Current.ip_address = request.ip
-        Current.user ||= current_user
+        Kiqr::Current.user_agent = request.user_agent
+        Kiqr::Current.ip_address = request.ip
+        Kiqr::Current.user ||= current_user
 
         # Account may already be set by the AccountMiddleware
-        Current.account ||= account_from_session || fallback_account
+        Kiqr::Current.account ||= account_from_session || fallback_account
       end
 
       def account_from_session
