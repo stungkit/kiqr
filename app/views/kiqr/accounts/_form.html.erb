@@ -1,4 +1,4 @@
-<%= simple_form_for @account do |f| %>
+<%= simple_form_for @account, url: account_path do |f| %>
   <%= f.input :name, label: 'Name' %>
   <%= f.input :billing_email, label: 'Billing email' %>
   <%= f.submit %>
