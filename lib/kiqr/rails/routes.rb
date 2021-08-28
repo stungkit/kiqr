@@ -30,7 +30,7 @@ module ActionDispatch
       end
 
       def kiqr_members(_options)
-        resources :members
+        resources :members, only: :index
       end
     end
   end

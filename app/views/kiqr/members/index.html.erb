@@ -12,10 +12,8 @@
     <% @members.each do |member| %>
     <tr>
       <td><%= member.user.email %></td>
-      <td>Member</td>
-      <td>
-        <%= link_to 'Edit', edit_member_path(member) %>
-      </td>
+      <td><%= member.role_name %></td>
+      <td></td>
     </tr>
     <% end %>
   </tbody>

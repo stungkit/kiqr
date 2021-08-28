@@ -13,6 +13,10 @@ class KiqrController < Kiqr.config.parent_controller.constantize
     root_path
   end
 
+  def current_ability
+    @current_ability ||= Ability.new(current_member)
+  end
+
   private
 
   def set_account
@@ -21,5 +25,9 @@ class KiqrController < Kiqr.config.parent_controller.constantize
 
   def account_params
     params.require(:account).permit(:name, :billing_email)
+  end
+
+  def member_params
+    params.require(:member).permit(:role, :invitee_email)
   end
 end

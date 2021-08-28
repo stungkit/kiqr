@@ -2,10 +2,12 @@ module Kiqr
   class Ability
     include ::CanCan::Ability
 
-    class << self
-      def role_name
-        'member'
-      end
+    def initialize(subscription)
+      @subscription = subscription
+    end
+
+    def self.role_name
+      'Member'
     end
   end
 end

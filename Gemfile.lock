@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     kiqr (0.2.0)
+      cancancan
       dry-configurable
       simple_form
       valid_email2
@@ -70,6 +71,7 @@ GEM
       zeitwerk (~> 2.3)
     ast (2.4.2)
     builder (3.2.4)
+    cancancan (3.3.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     diff-lcs (1.4.4)
