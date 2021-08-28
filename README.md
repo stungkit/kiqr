@@ -10,18 +10,22 @@ Kiqr
 
 **If you're new to Kiqr, we strongly recommend you to start with our pre-configured app [kiqr_starter](https://github.com/kiqr/kiqr_starter).**
 
+#### Whats included?
+- Multi-user team/organization logic that let you share resources between users in a team
+
 #### Requirements
 
 - Ruby 2.5 or higher
 - Rails 6.1.4 or higher
-- A [Paddle.com](https://paddle.com) vendor account to enable subscriptions.
+- Devise or any other authentication gem installed and configured for model ```User```
 
 #### Included dependencies
 
-_Kiqr comes bundled with some third-party Ruby Gems. These are all well tested and receives regular security updates allowing you to focus on your own code:_
-- [dry-configurable](https://github.com/dry-rb/dry-configurable) - A simple mixin to make Ruby classes configurable
-- [valid_email2](https://github.com/micke/valid_email2) - ActiveModel validation for email. Including MX lookup and disposable email blacklist
-- [simple_form](https://github.com/heartcombo/simple_form) - Simple generation of forms that you can configure in your template
+Kiqr comes bundled with some third-party Ruby Gems. These are all well tested and receives regular security updates allowing you to focus on your own code:
+- [cancancan](https://github.com/CanCanCommunity/cancancan) - Authorization for roles and subscription plans.
+- [dry-configurable](https://github.com/dry-rb/dry-configurable) - A simple mixin to make Ruby classes configurable.
+- [valid_email2](https://github.com/micke/valid_email2) - ActiveModel validation for email. Including MX lookup and disposable email blacklist.
+- [simple_form](https://github.com/heartcombo/simple_form) - Simple generation of forms that you can configure in your template.
 
 ## Installation
 ### Option A: Use Kiqr Starter (easy)
@@ -56,32 +60,7 @@ current_account
 ```
 
 #### Switching between accounts
-Add ```accounts_path``` to your navigation to link to the account switching page, or when building a customized account switcher, redirect your user to:
-```ruby
-switch_account_path(:id)
-```
-
-## Models
-We recommend you to put all your resources under accounts instead of users. This is to support multi-tenancy and team accounts.
-
-#### Generate a new resource
-```bash
-$ rails generate model project account:references
-```
-
-## Controllers
-
-### Securing controllers
-To set up a controller with user authentication, just add this before_action (assuming you're using Devise and your model is 'User'):
-```ruby
-before_action :authenticate_user!
-```
-
-## Views
-
-### Snippets & examples
-
-#### Account switcher dropdown
+When building your customized account switcher, redirect your user to the ```switch_account_path```. For example: 
 ```html+erb
 <div class="dropdown-menu">
 <% current_user.accounts.each do |account| %>
@@ -90,10 +69,16 @@ before_action :authenticate_user!
 </div>
 ```
 
+#### Generate a new resource
+We recommend you to put all your resources under accounts instead of users. This is to support multi-tenancy and team accounts.
+```bash
+$ rails generate model project account:references
+```
+
 ## Routes
 
 ### Configuring routes
-Kiqr ships with default routes. If you need to customize them, you should probably be able to do it through the kiqr_routes method. It accepts several options like :path_names and so on, including the possibility to change path names for I18n:
+Kiqr ships with default routes. If you need to customize them, you should probably be able to do it through the kiqr_routes method. It accepts several options like ```path:``` and so on, including the possibility to change path names for I18n:
 
 To rename the ```/account``` scope to ```/organization``` you can use the ```path:``` option:
 ```ruby
@@ -107,7 +92,7 @@ kiqr_routes path: 'organization'
 | `new_account_path` | GET | /account/new | Create an account |
 | `edit_account_path` | GET | /account/edit | Account settings |
 | `setup_account_path` | GET | /account/setup | Setup the default account |
-| `switch_account_path(:id)` | GET/PATCH | /accounts/:id/switch | Switch to another account |
+| `switch_account_path(:id)` | GET/PATCH | /account/:id/switch | Switch to another account |
 | `members_path` | GET | /account/members | List of account members (users) |
 
 ## Contributing
