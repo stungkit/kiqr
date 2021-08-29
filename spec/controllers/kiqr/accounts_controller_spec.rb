@@ -5,6 +5,7 @@ require 'spec_helper'
 module Kiqr
   RSpec.describe AccountsController, type: :controller do
     pending 'should redirect /account to /account/edit'
+    pending 'should respond to /organization/edit if kiqr_routes path: is set to organization'
 
     it { should route(:get, '/account/new').to(action: :new) }
     it { should route(:get, '/account/setup').to(action: :setup) }
