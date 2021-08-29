@@ -3,7 +3,7 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(member)
+  def initialize(member, _subscription_plan)
     member ||= Member.new # guest member (not logged in)
 
     # By default, the user role 'member' has read-only

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Kiqr
   module Models
     module User

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'kiqr/version'
 require 'kiqr/engine'
 require 'kiqr/rails/routes'
@@ -11,6 +13,7 @@ module Kiqr
   extend Dry::Configurable
 
   module Controllers
+    autoload :Helpers, 'kiqr/controllers/helpers'
     autoload :CurrentHelpers, 'kiqr/controllers/current_helpers'
     autoload :FrontendHelpers, 'kiqr/controllers/frontend_helpers'
     autoload :SetCurrentRequestDetails, 'kiqr/controllers/set_current_request_details'
@@ -23,7 +26,6 @@ module Kiqr
     autoload :User, 'kiqr/models/user'
   end
 
-  autoload :Ability, 'kiqr/ability'
   autoload :Current, 'kiqr/current'
 
   # The parent controller all Kiqr controllers inherits from.
@@ -35,4 +37,10 @@ module Kiqr
   # be found in the documentation for 'valid_email2' gem at:
   # https://github.com/micke/valid_email2
   setting :email_validations, { mx: true }
+
+  # Which formats should be treated as navigational. Navigational formats
+  # like :html & :turbo_stream should redirect and show flash messages,
+  # but other formats like :xml or :json, should return 401. The "*/*"
+  # format below is required to match Internet Explorer.
+  setting :navigational_formats, ['*/*', :html, :turbo_stream]
 end

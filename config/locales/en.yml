@@ -7,6 +7,5 @@ en:
   kiqr:
     accounts:
       created: Your account was successfully created!
-      switched: You are now managing account %{account_name}.
       after_setup: Your new account has been setup successfully!
       updated: Settings successfully updated!      

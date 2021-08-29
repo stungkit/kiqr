@@ -1,56 +1,68 @@
+# frozen_string_literal: true
+
 module Kiqr
   class AccountsController < KiqrController
     before_action :set_account, only: %i[edit update setup]
-    skip_before_action :redirect_to_account_setup
+    skip_before_action :redirect_to_account_setup, only: %i[new create setup update switch]
 
-    def index
-      @accounts = current_user.accounts
-    end
-
+    # GET /account/new
     def new
       @account = current_user.accounts.new
     end
 
-    def create
-      @account = current_user.accounts.new(account_params.merge(owner: current_user))
-      @account.members.new(user: current_user)
-
-      if @account.save
-        flash[:notice] = I18n.t('kiqr.accounts.created', account_name: @account.name)
-        redirect_to after_account_created_path(@account)
-      else
-        respond_to do |format|
-          format.turbo_stream { render turbo_stream: turbo_stream.replace('new_account', partial: 'form') }
-          format.html { render :new }
-        end
-      end
-    end
-
+    # GET /account/setup
     def setup
       redirect_to edit_account_path unless @account.pending_setup?
     end
 
+    # GET /account/edit
     def edit; end
 
-    def update
-      is_setting_up = @account.pending_setup?
+    # POST /account
+    def create
+      @account = current_user.accounts.build(account_params.merge(owner: current_user))
+      @account.members.new(user: current_user)
 
-      if @account.update(account_params)
-        flash[:notice] = (is_setting_up ? I18n.t('kiqr.accounts.after_setup') : I18n.t('kiqr.accounts.updated'))
-        redirect_to(is_setting_up ? after_account_setup_path(@account) : edit_account_path)
+      if @account.save
+        set_flash_message(:notice, :created)
+        switch
       else
-        respond_to do |format|
-          format.turbo_stream { render turbo_stream: turbo_stream.replace("edit_account_#{@account.id}", partial: 'form') }
-          format.html { render(is_setting_up? ? :setup : :edit) }
-        end
+        render :new, status: :unprocessable_entity
       end
     end
 
+    # PATCH /account
+    def update
+      location, flash_key = location_and_flash_key_for_update
+      @account.update(account_params)
+      set_flash_message(:notice, flash_key) if @account.errors.blank?
+      respond_with @account, location: location
+    end
+
+    # GET/PATCH /account/switch/:id
     def switch
-      @account = current_user.accounts.find(params[:id])
+      @account ||= current_user.accounts.find(params[:id])
       session[:account_id] = @account.id
-      flash[:notice] = I18n.t('kiqr.accounts.switched', account_name: @account.name)
-      redirect_to after_account_switched_path(@account)
+      redirect_to after_account_switched_path
+    end
+
+    private
+
+    # Since the update endpoint is shared by both edit and setup. We'll need to
+    # return different a location and flash message depending on if the account is
+    # edited or if we're on our account setup.
+    def location_and_flash_key_for_update
+      @account.pending_setup? ? [after_account_setup_path, :after_setup] : [after_account_updated_path, :updated]
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_account
+      @account = current_user.accounts.find(current_account.id)
+    end
+
+    # Only allow a list of trusted parameters through.
+    def account_params
+      params.require(:account).permit(:name, :billing_email)
     end
   end
 end
