@@ -8,14 +8,10 @@ Bundler.setup
 require File.expand_path('dummy/config/environment', __dir__)
 
 require 'rspec/rails'
-require 'database_cleaner'
+require 'kiqr'
 
 RSpec.configure do |config|
   config.order = :random
-  # Clean out the database state before the tests run
-  config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
 end
 
 Shoulda::Matchers.configure do |config|

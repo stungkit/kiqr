@@ -8,7 +8,6 @@ gemspec
 gem 'rails', '~> 6.1.0'
 
 group :development, :test do
-  gem 'database_cleaner'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'rubocop', require: false

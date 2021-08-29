@@ -5,6 +5,10 @@ module Kiqr
     before_action :set_account, only: %i[edit update setup]
     skip_before_action :redirect_to_account_setup, only: %i[new create setup update switch]
 
+    def index
+      redirect_to edit_account_path
+    end
+
     # GET /account/new
     def new
       @account = current_user.accounts.new
