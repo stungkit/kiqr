@@ -8,6 +8,7 @@ module Kiqr
     pending 'belongs to user'
     pending 'belongs to account'
     pending 'sets default role on create'
+    pending 'validates role exists in AVAILABLE_ROLES constant'
     pending 'can check if it has a specific role with role?(role)'
   end
 end
