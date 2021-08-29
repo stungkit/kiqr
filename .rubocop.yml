@@ -3,10 +3,10 @@ inherit_from: .rubocop_todo.yml
 require: 
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-performance
 AllCops:
   TargetRubyVersion: 2.5
   NewCops: enable
   Exclude:
-    - '**/Rakefile'
-    - '**/spec/**/*'
+    - '**/spec/dummy/**/*'
     - '**/templates/**/*'
