@@ -5,13 +5,19 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'bundler/setup'
 Bundler.setup
 
-require File.expand_path('dummy/config/environment', __dir__)
+require 'devise'
+require 'devise/version'
 
-require 'rspec/rails'
+require 'rails_app/config/environment'
+
 require 'kiqr'
+require 'rspec/rails'
+require 'shoulda'
 
 RSpec.configure do |config|
   config.order = :random
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
 end
 
 Shoulda::Matchers.configure do |config|
@@ -19,6 +25,18 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+ActiveRecord::Migration.verbose = false
+ActiveRecord::Base.logger = Logger.new(nil)
+
+migrate_path = File.expand_path('rails_app/db/migrate/', __dir__)
+if Rails.version.start_with? '6'
+  ActiveRecord::MigrationContext.new(migrate_path, ActiveRecord::SchemaMigration).migrate
+elsif Rails.version.start_with? '5.2'
+  ActiveRecord::MigrationContext.new(migrate_path).migrate
+else
+  ActiveRecord::Migrator.migrate(migrate_path)
 end
 
 # Webrat.configure do |config|

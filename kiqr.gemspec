@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+  s.test_files = Dir['spec/**/*.rb']
   s.required_ruby_version = '>= 2.5'
 
   s.add_dependency 'cancancan'

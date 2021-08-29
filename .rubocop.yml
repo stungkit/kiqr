@@ -8,7 +8,7 @@ AllCops:
   TargetRubyVersion: 2.5
   NewCops: enable
   Exclude:
-    - '**/spec/dummy/**/*'
+    - '**/spec/rails_app/**/*'
     - '**/templates/**/*'
 RSpec/ImplicitExpect:
   EnforcedStyle: should

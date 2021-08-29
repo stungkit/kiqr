@@ -6,8 +6,10 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rails', '~> 6.1.0'
+gem 'rails-controller-testing', github: 'rails/rails-controller-testing'
 
 group :development, :test do
+  gem 'devise', '~> 4.8'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'rubocop', require: false

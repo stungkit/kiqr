@@ -5,8 +5,8 @@ coverage/*
 rdoc/*
 pkg
 log
-spec/dummy/log/*
-spec/dummy/tmp/*
+spec/rails_app/log/*
+spec/rails_app/tmp/*
 spec/tmp/*
 gemfiles/*.lock
 .DS_Store
