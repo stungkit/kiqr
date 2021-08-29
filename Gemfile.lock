@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kiqr (1.0.0)
+    kiqr (1.0.0.pre.alpha)
       cancancan
       dry-configurable
       simple_form
