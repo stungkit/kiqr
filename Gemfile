@@ -10,6 +10,8 @@ gem 'rails-controller-testing', github: 'rails/rails-controller-testing'
 
 group :development, :test do
   gem 'devise', '~> 4.8'
+  gem 'factory_bot_rails', '~> 6.0'
+  gem 'faker', github: 'faker-ruby/faker'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'rubocop', require: false

@@ -5,19 +5,17 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'bundler/setup'
 Bundler.setup
 
-require 'devise'
-require 'devise/version'
-
 require 'rails_app/config/environment'
 
 require 'kiqr'
 require 'rspec/rails'
-require 'shoulda'
+require 'support/factories'
 
 RSpec.configure do |config|
   config.order = :random
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
+  config.include FactoryBot::Syntax::Methods
 end
 
 Shoulda::Matchers.configure do |config|

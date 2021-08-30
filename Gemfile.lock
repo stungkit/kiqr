@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 4767edc5a11215ff2c023b582d1cb14ffe4e276b
+  specs:
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
+
+GIT
   remote: https://github.com/rails/rails-controller-testing.git
   revision: bc6f3356803d7c5d373f89a44625d59953dc0cef
   specs:
@@ -98,6 +105,11 @@ GEM
     dry-core (0.7.1)
       concurrent-ruby (~> 1.0)
     erubi (1.10.0)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     globalid (0.5.2)
       activesupport (>= 5.0)
     i18n (1.8.10)
@@ -234,6 +246,8 @@ PLATFORMS
 
 DEPENDENCIES
   devise (~> 4.8)
+  factory_bot_rails (~> 6.0)
+  faker!
   kiqr!
   rails (~> 6.1.0)
   rails-controller-testing!
