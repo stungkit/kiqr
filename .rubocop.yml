@@ -10,5 +10,6 @@ AllCops:
   Exclude:
     - '**/spec/rails_app/**/*'
     - '**/templates/**/*'
+    - 'gemfiles/*'
 RSpec/ImplicitExpect:
   EnforcedStyle: should
