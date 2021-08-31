@@ -12,6 +12,7 @@ AllCops:
     - '**/spec/rails_app/**/*'
     - '**/templates/**/*'
     - '**/migrate/**'
+    - '**/gem_version.rb'
 
 RSpec/ImplicitExpect:
   EnforcedStyle: should
