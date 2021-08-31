@@ -5,7 +5,7 @@ require_relative 'lib/kiqr/core/version'
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'kiqr_core'
-  s.version     = Kiqr.version
+  s.version     = Kiqr::Core.version
   s.authors     = ['Rasmus Kjellberg', 'WK Operations']
   s.email       = 'hello@wkoperations.com'
   s.summary     = 'Core gem for Kiqr'
