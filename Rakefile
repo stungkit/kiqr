@@ -3,7 +3,7 @@
 require 'bundler/gem_tasks'
 require 'rubocop/rake_task'
 
-KIQR_GEMS = %w[core].freeze
+KIQR_GEMS = %w[core devise].freeze
 
 task default: :spec
 
