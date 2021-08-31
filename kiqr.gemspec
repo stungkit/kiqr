@@ -1,24 +1,23 @@
 # frozen_string_literal: true
 
-require_relative 'lib/kiqr/version'
+require_relative 'core/lib/kiqr/core/version'
 
 Gem::Specification.new do |s|
+  s.platform    = Gem::Platform::RUBY
   s.name        = 'kiqr'
-  s.version     = Kiqr::VERSION
-  s.authors     = ['kjellberg']
-  s.email       = ['rk@youngmedia.se']
+  s.version     = Kiqr.version
+  s.authors     = ['Rasmus Kjellberg', 'WK Operations']
+  s.email       = 'hello@wkoperations.com'
+  s.summary     = 'SaaS applications with Ruby on Rails'
+  s.description = 'An open source framework for creatin g SaaS applications with Ruby on Rails'
   s.homepage    = 'https://kiqr.dev'
-  s.summary     = 'An open-source framework for creating SaaS applications with Ruby on Rails'
-  s.description = 'An open-source framework for creating SaaS applications with Ruby on Rails'
   s.license     = 'MIT'
 
-  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
-  s.test_files = Dir['spec/**/*.rb']
-  s.required_ruby_version = '>= 2.5'
+  s.files        = Dir['README.md']
+  s.require_path = 'lib'
+  s.requirements << 'none'
 
-  s.add_dependency 'cancancan'
-  s.add_dependency 'dry-configurable'
-  s.add_dependency 'responders'
-  s.add_dependency 'simple_form'
-  s.add_dependency 'valid_email2'
+  s.required_ruby_version = '>= 2.6'
+
+  s.add_dependency 'kiqr_core', s.version
 end

@@ -2,9 +2,9 @@
 Kiqr
 ==============
 
-[![works badge](https://cdn.jsdelivr.net/gh/nikku/works-on-my-machine@v0.2.0/badge.svg)](https://github.com/nikku/works-on-my-machine)
+[![RuboCop Github Action](https://github.com/kiqr/kiqr/actions/workflows/rubocop.yml/badge.svg)](https://github.com/kiqr/kiqr/actions/workflows/rubocop.yml)
+[![RSpec Github Action](https://github.com/kiqr/kiqr/actions/workflows/rspec.yml/badge.svg)](https://github.com/kiqr/kiqr/actions/workflows/rspec.yml)
 [![Gem Version](https://badge.fury.io/rb/kiqr.svg)](https://badge.fury.io/rb/kiqr)
-[![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails)
 
 **Kiqr** is an open-source framework for creating SaaS applications with Ruby on Rails.
 
@@ -15,8 +15,8 @@ Kiqr
 
 #### Requirements
 
-- Ruby 2.5 or higher
-- Rails 6.1.4 or higher
+- Ruby 2.7 or higher
+- Rails 6.0.3 or higher
 - Devise or any other authentication gem installed and configured for model ```User```
 
 #### Included dependencies
