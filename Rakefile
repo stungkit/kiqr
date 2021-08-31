@@ -3,7 +3,7 @@
 require 'bundler/gem_tasks'
 require 'rubocop/rake_task'
 
-KIQR_GEMS = %w[core auth_devise].freeze
+KIQR_GEMS = %w[core].freeze
 
 task default: :spec
 
@@ -36,6 +36,7 @@ task :clean do
 
   KIQR_GEMS.each do |gem_name|
     rm_f "#{gem_name}/Gemfile.lock"
+    rm_rf "#{gem_name}/.bundle"
     # rm_rf "#{gem_name}/spec/dummy"
   end
 end
