@@ -7,9 +7,10 @@ $LOAD_PATH.unshift File.dirname(__FILE__)
 
 KIQR_GEMS = %w[core devise].freeze
 
+require 'tasks/update_versions'
 require 'tasks/bundle'
 require 'tasks/clean'
-require 'tasks/bump_versions'
+require 'tasks/gem'
 
 task default: :spec
 

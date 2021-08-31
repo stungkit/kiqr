@@ -3,8 +3,8 @@
 root    = File.expand_path('..', __dir__)
 version = File.read("#{root}/KIQR_VERSION").strip
 
-desc 'Bump version.rb files with KIQR_VERSION in all projects'
-task :bump_versions do
+desc 'Update version.rb files with KIQR_VERSION in all projects'
+task :update_versions do
   KIQR_GEMS.each do |gem_name|
     glob = root.dup
     glob << "/#{gem_name}/lib/**"

@@ -3,6 +3,7 @@
 desc 'Clean the whole repository by removing all the generated files'
 task :clean do
   rm_f 'Gemfile.lock'
+  rm_rf 'pkg'
 
   KIQR_GEMS.each do |gem_name|
     rm_f "#{gem_name}/Gemfile.lock"
