@@ -4,12 +4,14 @@ require:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-performance
+
 AllCops:
   TargetRubyVersion: 2.6
   NewCops: enable
   Exclude:
     - '**/spec/rails_app/**/*'
     - '**/templates/**/*'
-    - 'gemfiles/*'
+    - '**/migrate/**'
+
 RSpec/ImplicitExpect:
   EnforcedStyle: should
