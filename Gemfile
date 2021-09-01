@@ -2,4 +2,6 @@
 
 eval_gemfile('common_dependencies.rb')
 
-gemspec
+gem 'kiqr', path: 'cmd'
+gem 'kiqr_core', path: 'core'
+gem 'kiqr_devise', path: 'devise'

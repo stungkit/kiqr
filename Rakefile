@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'bundler/gem_tasks'
+require 'bundler/setup'
 require 'rubocop/rake_task'
 
 $LOAD_PATH.unshift File.dirname(__FILE__)
 
-KIQR_GEMS = %w[core devise].freeze
+KIQR_GEMS = %w[core devise cmd].freeze
 
 require 'tasks/update_versions'
 require 'tasks/bundle'
@@ -13,7 +13,7 @@ require 'tasks/clean'
 require 'tasks/gem'
 require 'tasks/sandbox'
 
-task default: :spec
+task default: %i[rubocop spec]
 
 desc 'Run rubocop tests.'
 RuboCop::RakeTask.new(:rubocop) do |t|

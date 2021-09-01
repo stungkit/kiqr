@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 root    = File.expand_path('..', __dir__)
 version = File.read("#{root}/KIQR_VERSION").strip
-
 
 namespace :gem do
   pkg_dir = "#{root}/pkg"
@@ -8,10 +9,14 @@ namespace :gem do
   task build: :update_versions do
     FileUtils.mkdir_p pkg_dir
 
-    sh 'rake build'
     KIQR_GEMS.each do |gem_name|
-      gemspec = "kiqr_#{gem_name}.gemspec"
-      gemfile = "kiqr_#{gem_name}-#{version}.gem"
+      if gem_name == 'cmd'
+        gemspec = 'kiqr.gemspec'
+        gemfile = "kiqr-#{version}.gem"
+      else
+        gemspec = "kiqr_#{gem_name}.gemspec"
+        gemfile = "kiqr_#{gem_name}-#{version}.gem"
+      end
 
       Dir.chdir(gem_name) do
         sh "gem build #{gemspec}"
@@ -20,15 +25,19 @@ namespace :gem do
     end
   end
 
-  desc "Release all gems to rubygems"
+  desc 'Release all gems to rubygems'
   task release: :build do
     # sh "git tag -a -m \"Version #{version}\" v#{version}"
 
-    sh "gem push '#{pkg_dir}/kiqr-#{version}.gem'"
     KIQR_GEMS.each do |gem_name|
-      gemfile = "kiqr_#{gem_name}-#{version}.gem"
+      gemfile = if gem_name == 'cmd'
+                  "kiqr-#{version}.gem"
+                else
+                  "kiqr_#{gem_name}-#{version}.gem"
+                end
+
       gem_path = "#{pkg_dir}/#{gemfile}"
-      sh "gem push '#{gem_path}'"
+      puts "gem push '#{gem_path}'"
     end
   end
 end
