@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rubocop/rake_task'
 
 $LOAD_PATH.unshift File.dirname(__FILE__)
