@@ -6,7 +6,7 @@ module Kiqr
       desc 'Show Kiqr version number and quit'
 
       def call(*)
-        version = Kiqr::CLI.version
+        version = Kiqr.version
         puts "Kiqr #{version}"
       end
     end
