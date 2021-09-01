@@ -18,16 +18,13 @@ rails_flags = [
 namespace :sandbox do
   desc 'Generate a sandbox environment for development.'
   task :install do
-    flags = rails_flags.join(' ')
-    command = "bundle exec rails new #{sandbox_path} #{flags}"
+    command = "bundle exec kiqr new #{sandbox_path} -- #{rails_flags.join(' ')}"
 
+    # Delete old sandbox directory
     rm_rf sandbox_path
+
     Bundler.with_unbundled_env do
       sh command
     end
-
-    sh "cd #{sandbox_path}"
   end
 end
-
-# bundle exec rails new sandbox --database="$RAILSDB"
