@@ -11,6 +11,7 @@ require 'tasks/update_versions'
 require 'tasks/bundle'
 require 'tasks/clean'
 require 'tasks/gem'
+require 'tasks/sandbox'
 
 task default: :spec
 

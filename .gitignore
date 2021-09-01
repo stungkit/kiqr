@@ -26,3 +26,4 @@ coverage/*
 .ruby-gemset
 vendor/bundle
 */vendor/bundle
+sandbox
