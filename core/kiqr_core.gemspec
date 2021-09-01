@@ -19,10 +19,9 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.6'
   s.required_rubygems_version = '>= 1.8.23'
 
-  s.add_dependency 'cancancan'
-  s.add_dependency 'dry-configurable'
-  s.add_dependency 'rails'
-  s.add_dependency 'responders'
-  s.add_dependency 'simple_form'
-  s.add_dependency 'valid_email2'
+  s.add_dependency 'cancancan', '~> 3.3.0'
+  s.add_dependency 'dry-configurable', '~> 0.12.1'
+  s.add_dependency 'responders', '~> 3.0.1'
+  s.add_dependency 'simple_form', '~> 5.1.0'
+  s.add_dependency 'valid_email2', '~> 4.0.0'
 end
