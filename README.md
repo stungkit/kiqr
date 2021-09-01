@@ -6,7 +6,7 @@ Kiqr
 [![RSpec](https://github.com/kiqr/kiqr/actions/workflows/rspec.yml/badge.svg)](https://github.com/kiqr/kiqr/actions/workflows/rspec.yml)
 [![Gem Version](https://badge.fury.io/rb/kiqr.svg)](https://badge.fury.io/rb/kiqr)
 
-Kiqr is an open-source starter kit for creating SaaS applications with Ruby on Rails. You can generate a new application using our command tool or add Kiqr to an existing project.
+Kiqr is an open-source starter kit and framework for creating SaaS applications with Ruby on Rails. You can generate a new application using our command tool or add Kiqr to an existing project.
 
 ## Getting Started
 - [Generate a new application](https://docs.kiqr.dev/getting-started/installation)
