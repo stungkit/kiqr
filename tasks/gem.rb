@@ -26,7 +26,7 @@ namespace :gem do
   end
 
   desc 'Release all gems to rubygems'
-  task release: :build do
+  task :release do
     # sh "git tag -a -m \"Version #{version}\" v#{version}"
 
     KIQR_GEMS.each do |gem_name|
