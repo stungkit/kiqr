@@ -1,12 +1,9 @@
-name: kiqr
+name: RSpec
 
 on:
   push:
     branches:
       - main
-    paths: 
-      - 'cmd/**'
-      - '!cmd/**.md'
   pull_request:
     branches:
       - main
@@ -36,9 +33,9 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-    - name: Install RubyGems
+    - name: bundle install
       run: bundle install --jobs 4 --retry 3
-      working-directory: ./cmd
+    - name: rake bundle
+      run: rake bundle
     - name: Run RSpec
       run: rake spec
-      working-directory: ./cmd

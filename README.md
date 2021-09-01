@@ -4,9 +4,7 @@ Kiqr
 
 [![RuboCop Github Action](https://github.com/kiqr/kiqr/actions/workflows/rubocop.yml/badge.svg)](https://github.com/kiqr/kiqr/actions/workflows/rubocop.yml)
 [![Gem Version](https://badge.fury.io/rb/kiqr.svg)](https://badge.fury.io/rb/kiqr)
-[![kiqr](https://github.com/kiqr/kiqr/actions/workflows/kiqr.yml/badge.svg)](https://github.com/kiqr/kiqr/actions/workflows/kiqr.yml)
-[![kiqr_core](https://github.com/kiqr/kiqr/actions/workflows/kiqr_core.yml/badge.svg)](https://github.com/kiqr/kiqr/actions/workflows/kiqr_core.yml)
-[![kiqr_devise](https://github.com/kiqr/kiqr/actions/workflows/kiqr_devise.yml/badge.svg)](https://github.com/kiqr/kiqr/actions/workflows/kiqr_devise.yml)
+[![rspec](https://github.com/kiqr/kiqr/actions/workflows/rspec.yml/badge.svg)](https://github.com/kiqr/kiqr/actions/workflows/rspec.yml)
 
 **Kiqr** is an open-source framework for creating SaaS applications with Ruby on Rails.
 
