@@ -13,6 +13,7 @@ AllCops:
     - '**/templates/**/*'
     - '**/migrate/**'
     - '**/gem_version.rb'
+    - 'sandbox/**/*'
 
 RSpec/ImplicitExpect:
   EnforcedStyle: should
