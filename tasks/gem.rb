@@ -8,36 +8,16 @@ namespace :gem do
 
   task build: :update_versions do
     FileUtils.mkdir_p pkg_dir
-
+    sh 'gem build'
+    mv "kiqr-#{version}.gem", "#{pkg_dir}/kiqr-#{version}.gem"
     KIQR_GEMS.each do |gem_name|
-      if gem_name == 'cmd'
-        gemspec = 'kiqr.gemspec'
-        gemfile = "kiqr-#{version}.gem"
-      else
-        gemspec = "kiqr_#{gem_name}.gemspec"
-        gemfile = "kiqr_#{gem_name}-#{version}.gem"
-      end
+      gemspec = "kiqr_#{gem_name}.gemspec"
+      gemfile = "kiqr_#{gem_name}-#{version}.gem"
 
       Dir.chdir(gem_name) do
         sh "gem build #{gemspec}"
         mv gemfile, "#{pkg_dir}/#{gemfile}"
       end
-    end
-  end
-
-  desc 'Release all gems to rubygems'
-  task :release do
-    # sh "git tag -a -m \"Version #{version}\" v#{version}"
-
-    KIQR_GEMS.each do |gem_name|
-      gemfile = if gem_name == 'cmd'
-                  "kiqr-#{version}.gem"
-                else
-                  "kiqr_#{gem_name}-#{version}.gem"
-                end
-
-      gem_path = "#{pkg_dir}/#{gemfile}"
-      puts "gem push '#{gem_path}'"
     end
   end
 end

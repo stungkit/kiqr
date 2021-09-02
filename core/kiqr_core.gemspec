@@ -24,4 +24,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'responders', '~> 3.0.1'
   s.add_dependency 'simple_form', '~> 5.1.0'
   s.add_dependency 'valid_email2', '~> 4.0.0'
+
+  s.add_dependency 'devise', '~> 4.7'
 end

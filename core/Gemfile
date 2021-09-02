@@ -1,9 +1,0 @@
-# frozen_string_literal: true
-
-eval_gemfile('../common_dependencies.rb')
-
-# We need Devise here cause we're using Devise for
-# our User model in our dummy app.
-gem 'devise', '~> 4.7'
-
-gemspec

@@ -37,7 +37,5 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
     - name: bundle install
       run: bundle install --jobs 4 --retry 3
-    - name: rake bundle
-      run: rake bundle
     - name: Run RSpec
       run: rake spec

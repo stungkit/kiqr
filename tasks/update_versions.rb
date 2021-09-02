@@ -13,6 +13,8 @@ task :update_versions do
     file = Dir[glob].first
     ruby = File.read(file)
 
+    puts "Bump version in #{file} to #{version}"
+
     major, minor, tiny, pre = version.split('.', 4)
     pre = pre ? pre.inspect : 'nil'
 
