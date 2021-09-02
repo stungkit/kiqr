@@ -27,3 +27,4 @@ coverage/*
 vendor/bundle
 */vendor/bundle
 sandbox
+*.gem
