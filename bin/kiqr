@@ -13,8 +13,21 @@ if rails_version < Gem::Version.new(min_rails_version)
   exit
 end
 
+# Not yet implemented
+if rails_version >= Gem::Version.new('7.0.0')
+  puts 'Please update Kiqr to the latest version to use with Rails 7.0.0 and above'
+  puts '  $ gem update kiqr'
+  puts ''
+  exit
+end
+
 template_directory = File.expand_path('../lib/generators/templates', __dir__)
-template_file = File.join(template_directory, 'default.rb')
+
+template_file = if ARGV[0] == 'sandbox'
+                  File.join(template_directory, 'sandbox.rb')
+                else
+                  File.join(template_directory, 'default.rb')
+                end
 
 # Run default rails installer
 system("rails new #{ARGV.join(' ')} -m #{template_file}")

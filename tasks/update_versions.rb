@@ -5,6 +5,13 @@ version = File.read("#{root}/KIQR_VERSION").strip
 
 desc 'Update version.rb files with KIQR_VERSION in all projects'
 task :update_versions do
+
+  file = 'lib/generators/templates/default.rb'
+  ruby = File.read(file)
+  ruby.gsub!(/^(\s*)KIQR_VERSION(\s*)= .*?$/, "\\1KIQR_VERSION = '#{version}'")
+  raise "Could not insert version in #{file}" unless Regexp.last_match(1)
+  File.open(file, 'w') { |f| f.write ruby }
+
   KIQR_GEMS.each do |gem_name|
     glob = root.dup
     glob << "/#{gem_name}/lib/**"
