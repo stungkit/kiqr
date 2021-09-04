@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'heroicon'
   s.add_dependency 'simple_form', '~> 5.1.0'
+  s.add_dependency 'tailwindcss-rails-webpacker', '~> 0.1.2'
 end
