@@ -11,6 +11,7 @@ AllCops:
   Exclude:
     - '**/spec/rails_app/**/*'
     - '**/templates/**/*'
+    - '**/initializers/**/*'
     - '**/migrate/**'
     - '**/gem_version.rb'
     - 'sandbox/**/*'
