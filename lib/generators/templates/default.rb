@@ -13,19 +13,11 @@ inject_into_file 'Gemfile', before: 'group :development, :test do' do
   gem 'kiqr_core', '~> #{KIQR_VERSION}'
 
   # Addons (optional):
-  gem 'importmap-rails'
-  gem 'hotwire-rails'
-  gem 'responders', git: 'https://github.com/heartcombo/responders' # until Responders gem is published with version >= 3.0.2.
-
-  gem 'tailwindcss-rails'
-  gem 'heroicon'
+  gem 'kiqr_frontend', '~> #{KIQR_VERSION}'
   # ----- End of Kiqr dependencies -----
 
   RUBY
 end
-
-# Uncomment to uncomment Redis in Gemfile
-gsub_file('Gemfile', /gem 'webpacker'/, "# gem 'webpacker'")
 
 # Environment configs
 ########################################
@@ -36,12 +28,6 @@ RUBY
 environment env_config, env: 'development'
 
 after_bundle do
-  generate(:controller, 'pages', 'home', '--skip-routes', '--no-test-framework')
-
-  # Routes
-  ########################################
-  route "root to: 'pages#home'"
-
   # Git ignore
   ########################################
   append_file '.gitignore', <<~TXT
@@ -52,19 +38,25 @@ after_bundle do
     .DS_Store
   TXT
 
-  # Install importmap
-  rails_command('importmap:install')
+  generate(:controller, 'pages', 'welcome', '--skip-routes', '--no-test-framework')
 
-  # Install hotwire
-  rails_command('hotwire:install')
-
-  # TailwindCSS install
-  rails_command('tailwindcss:install')
+  # Routes
+  ########################################
+  route "root to: 'pages#welcome'"
 
   # Devise install + user
   ########################################
   generate('devise:install')
   generate('devise', 'User')
+  
+  # App controller
+  ########################################
+  run 'rm app/controllers/application_controller.rb'
+  file 'app/controllers/application_controller.rb', <<~RUBY
+    class ApplicationController < ActionController::Base
+    #{  "protect_from_forgery with: :exception\n" if Rails.version < "5.2"}  before_action :authenticate_user!
+    end
+  RUBY
 
   # Kiqr install
   generate('kiqr:install', 'user')
