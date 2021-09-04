@@ -20,4 +20,13 @@ namespace :gem do
       end
     end
   end
+
+  task :release do
+    sh "gem push #{pkg_dir}/kiqr-#{version}.gem"
+
+    KIQR_GEMS.each do |gem_name|
+      gemfile = "kiqr_#{gem_name}-#{version}.gem"
+      sh "gem push #{pkg_dir}/#{gemfile}"
+    end
+  end
 end
