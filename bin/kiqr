@@ -13,14 +13,6 @@ if rails_version < Gem::Version.new(min_rails_version)
   exit
 end
 
-# Not yet implemented
-if rails_version >= Gem::Version.new('7.0.0')
-  puts 'Please update Kiqr to the latest version to use with Rails 7.0.0 and above'
-  puts '  $ gem update kiqr'
-  puts ''
-  exit
-end
-
 template_directory = File.expand_path('../lib/generators/templates', __dir__)
 
 template_file = if ARGV[0] == 'sandbox'
@@ -30,4 +22,4 @@ template_file = if ARGV[0] == 'sandbox'
                 end
 
 # Run default rails installer
-system("rails new #{ARGV.join(' ')} --skip-webpack-install -m #{template_file}")
+system("rails new #{ARGV.join(' ')} -m #{template_file}")
