@@ -3,7 +3,6 @@
 require 'cancan'
 require 'dry-configurable'
 require 'responders'
-require 'simple_form'
 require 'valid_email2'
 
 module Kiqr
