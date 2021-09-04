@@ -14,12 +14,14 @@ module Kiqr
         end
 
         def install_tailwindcss
-          stylesheets_path = "#{Webpacker.config.source_path}/stylesheets"
-          run 'yarn add tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9'
-          insert_into_file "#{Webpacker.config.source_entry_path}/application.js", "\nimport \"stylesheets/application\"\n"
-          directory 'lib/generators/templates/stylesheets', Webpacker.config.source_path.join('stylesheets')
-          insert_into_file "postcss.config.js", "require('tailwindcss')(\"./app/javascript/stylesheets/tailwind.config.js\"),\n    ",
-                 before: "require('postcss-import')"
+          rails_command('tailwindcss:install')
+        end
+
+        def replace_stylesheets
+          stylesheets_path = Webpacker.config.source_path.join('stylesheets')
+          run "rm -rf #{stylesheets_path}/application.scss"
+          run "rm -rf #{stylesheets_path}/tailwind.config.js"
+          directory 'lib/generators/templates/stylesheets', stylesheets_path
         end
 
         def install_view_files
