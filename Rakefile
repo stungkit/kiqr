@@ -4,7 +4,7 @@ require 'rubocop/rake_task'
 
 $LOAD_PATH.unshift File.dirname(__FILE__)
 
-KIQR_GEMS = %w[core devise].freeze
+KIQR_GEMS = %w[core].freeze
 
 Dir[File.join(__dir__, 'tasks', '*.rb')].sort.each { |file| require file }
 

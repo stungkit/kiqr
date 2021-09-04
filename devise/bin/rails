@@ -1,8 +1,0 @@
-#!/usr/bin/env ruby
-# frozen_string_literal: true
-
-ENGINE_ROOT = File.expand_path('..', __dir__)
-ENGINE_PATH = File.expand_path('../lib/kiqr/devise/engine', __dir__)
-
-require 'rails/all'
-require 'rails/engine/commands'
