@@ -58,6 +58,9 @@ after_bundle do
 
   # Kiqr install
   generate('kiqr:install', 'user')
+
+  # Kiqr_frontend install
+  generate('kiqr:frontend:install')
 end
 
 run 'touch .env'
