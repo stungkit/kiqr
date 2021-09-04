@@ -2,6 +2,7 @@
 
 require 'simple_form'
 require 'heroicon'
+require 'tailwindcss-rails-webpacker'
 
 module Kiqr
   module Frontend
