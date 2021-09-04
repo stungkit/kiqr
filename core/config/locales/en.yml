@@ -8,4 +8,12 @@ en:
     accounts:
       created: Your account was successfully created!
       after_setup: Your new account has been setup successfully!
-      updated: Settings successfully updated!      
+      updated: Settings successfully updated!
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+    error_notification:
+      default_message: "Please review the problems below:"
