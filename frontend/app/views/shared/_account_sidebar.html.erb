@@ -4,19 +4,19 @@
     <h2 class="text-xs text-gray-500"><%= current_account.name %></h2>
   </div>
 
-  <%= link_to edit_account_path, class: 'flex flex-col px-8 py-4 border-b border-gray-100 space-y-1' do %>
-    <h5 class="font-bold text-purple-500 text-xs uppercase"><%= t('.account_settings')%></h5>
-    <span class="text-gray-500 text-sm"><%= current_account.name %></span>
+  <%= link_to edit_account_path, class: 'kiqr-sidebar-link' do %>
+    <h5><%= t('.account_settings')%></h5>
+    <span><%= current_account.name %></span>
   <% end %>
 
-  <%= link_to '#', class: 'flex flex-col px-8 py-4 border-b border-gray-100 space-y-1' do %>
-    <h5 class="font-bold text-purple-500 text-xs uppercase"><%= t('.billing')%></h5>
-    <span class="text-gray-500 text-sm">No active subscription</span>
+  <%= link_to '#', class: 'kiqr-sidebar-link' do %>
+    <h5><%= t('.billing')%></h5>
+    <span>No active subscription</span>
   <% end %>
 
-  <%= link_to members_path, class: 'flex flex-col px-8 py-4 border-b border-gray-100 space-y-1' do %>
-    <h5 class="font-bold text-purple-500 text-xs uppercase">Members</h5>
-    <span class="text-gray-500 text-sm">Manage account users</span>
+  <%= link_to members_path, class: 'kiqr-sidebar-link' do %>
+    <h5>Members</h5>
+    <span>Manage account users</span>
   <% end %>
 </div>
 

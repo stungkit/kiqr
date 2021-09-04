@@ -1,0 +1,21 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer components {
+  .kiqr-form-submit {
+    @apply mx-8 my-4 cursor-pointer text-xs text-white font-bold bg-purple-500 py-4 px-6 rounded-lg w-60 disabled:opacity-50;
+  }
+
+  .kiqr-sidebar-link {
+    @apply flex flex-col px-8 py-4 border-b border-gray-100 space-y-1;
+  }
+
+  .kiqr-sidebar-link h5 {
+    @apply font-bold text-purple-500 text-xs uppercase;
+  }
+
+  .kiqr-sidebar-link span {
+    @apply text-gray-500 text-sm;
+  }
+}

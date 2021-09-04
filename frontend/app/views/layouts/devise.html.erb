@@ -11,23 +11,25 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap' %>
-
+    
     <style type="text/css">
     body { font-family: 'Ubuntu', sans-serif; }
     </style>
     <%= yield :head %>
   </head>
   <body class="bg-gray-50">
-    <%= render 'shared/account_navbar' %>
-    <div class="sticky top-0">
-      <%= render 'shared/navbar' %>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-6">
-      <%= render 'shared/flash_messages' %>
-      <%= yield %>
+    <div class="flex items-center min-h-screen">
+      <div class="container mx-auto">
+        <div class="max-w-md mx-auto my-10">
+          <div class="text-center">
+            <%= yield(:form_headers) %>
+          </div>
+          <div class="m-7">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
