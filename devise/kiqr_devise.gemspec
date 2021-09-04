@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.6'
   s.required_rubygems_version = '>= 1.8.23'
 
-  s.add_dependency 'devise', '~> 4.7'
+  s.add_dependency 'devise', '~> 4.8'
   s.add_dependency 'dry-configurable', '~> 0.12.1'
   s.add_dependency 'kiqr_core', s.version
 end
