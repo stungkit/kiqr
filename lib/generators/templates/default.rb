@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-KIQR_VERSION = '0.0.1'
+KIQR_VERSION = '1.0.0'
 
 # GEMFILE
 ########################################
@@ -13,8 +13,8 @@ inject_into_file 'Gemfile', before: 'group :development, :test do' do
   gem 'kiqr_core', '~> #{KIQR_VERSION}'
 
   # Addons (optional):
-  gem 'turbo-rails', '0.7.11'
-  gem 'stimulus-rails', '0.3.11'
+  gem 'importmap-rails'
+  gem 'hotwire-rails'
   gem 'responders', git: 'https://github.com/heartcombo/responders' # until Responders gem is published with version >= 3.0.2.
 
   gem 'tailwindcss-rails'
@@ -25,7 +25,7 @@ inject_into_file 'Gemfile', before: 'group :development, :test do' do
 end
 
 # Uncomment to uncomment Redis in Gemfile
-# gsub_file('Gemfile', /# gem 'redis'/, "gem 'redis'")
+gsub_file('Gemfile', /gem 'webpacker'/, "# gem 'webpacker'")
 
 # Environment configs
 ########################################
@@ -52,9 +52,11 @@ after_bundle do
     .DS_Store
   TXT
 
+  # Install importmap
+  rails_command('importmap:install')
+
   # Install hotwire
-  rails_command('turbo:install')
-  rails_command('stimulus:install')
+  rails_command('hotwire:install')
 
   # TailwindCSS install
   rails_command('tailwindcss:install')

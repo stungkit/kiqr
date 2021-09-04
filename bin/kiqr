@@ -30,4 +30,4 @@ template_file = if ARGV[0] == 'sandbox'
                 end
 
 # Run default rails installer
-system("rails new #{ARGV.join(' ')} -m #{template_file}")
+system("rails new #{ARGV.join(' ')} --skip-webpack-install -m #{template_file}")
