@@ -1,0 +1,22 @@
+<div class="bg-white border border-1 border-gray-200 rounded-lg">
+  <div class="flex flex-col space-y-1 px-8 py-4 border-b border-1 border-gray-200">
+    <h1 class="font-bold text-lg text-gray-700">Organization</h1>
+    <h2 class="text-xs text-gray-500"><%= current_account.name %></h2>
+  </div>
+
+  <%= link_to edit_account_path, class: 'flex flex-col px-8 py-4 border-b border-gray-100 space-y-1' do %>
+    <h5 class="font-bold text-purple-500 text-xs uppercase"><%= t('.account_settings')%></h5>
+    <span class="text-gray-500 text-sm"><%= current_account.name %></span>
+  <% end %>
+
+  <%= link_to '#', class: 'flex flex-col px-8 py-4 border-b border-gray-100 space-y-1' do %>
+    <h5 class="font-bold text-purple-500 text-xs uppercase"><%= t('.billing')%></h5>
+    <span class="text-gray-500 text-sm">No active subscription</span>
+  <% end %>
+
+  <%= link_to members_path, class: 'flex flex-col px-8 py-4 border-b border-gray-100 space-y-1' do %>
+    <h5 class="font-bold text-purple-500 text-xs uppercase">Members</h5>
+    <span class="text-gray-500 text-sm">Manage account users</span>
+  <% end %>
+</div>
+

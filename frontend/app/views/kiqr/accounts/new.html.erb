@@ -1,0 +1,21 @@
+<% content_for :title, "Create a new organization" %>
+
+<div class="grid grid-cols-12 space-y-8">
+  <div class="flex flex-col justify-center space-y-12 col-span-12 md:col-span-6 text-center md:text-left">
+    <div class="space-y-4">
+      <h1 class="font-bold text-2xl text-gray-700">Shared resources</h1>
+      <p class="md:w-3/4 text-gray-400">Share all resources with users in your team</p>
+    </div>
+    <div class="space-y-4">
+      <h1 class="font-bold text-2xl text-gray-500">Multiple users</h1>
+      <p class="md:w-3/4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </div>
+  <div class="bg-white border border-1 border-gray-200 rounded-lg col-span-12 md:col-span-6">
+    <div class="flex flex-col space-y-1 px-8 py-4 border-b border-1 border-gray-200">
+      <h2 class="font-bold text-lg text-gray-700">Create an organization</h2>
+    </div>
+
+    <%= render 'form' %>
+  </div>
+</div>

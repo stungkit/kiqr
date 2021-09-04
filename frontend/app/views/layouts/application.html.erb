@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <%= render 'shared/head' %>
+  <body class="bg-gray-50">
+    <%= render 'shared/account_navbar' if user_signed_in? %>
+    <div class="sticky top-0">
+      <%= render 'shared/navbar' %>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-6">
+      <%= render 'shared/flash_messages' %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

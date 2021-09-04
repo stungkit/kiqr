@@ -1,0 +1,12 @@
+<% if flash.count > 0 %>
+<div class="-m-2 -mt-10 mb-4 text-center">
+  <% flash.each do |type, msg| %>
+  <div class="p-2">
+    <div class="flex items-center bg-white leading-none text-<%= type == 'notice' ? 'purple-500' : 'pink-600' %> rounded-full p-2 shadow text-teal text-sm">
+      <span class="inline-flex bg-<%= type == 'notice' ? 'purple-500' : 'pink-600' %> text-white rounded-full h-6 px-3 justify-center items-center"><%= type.capitalize %></span>
+      <span class="inline-flex px-2"><%= msg %></span>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>

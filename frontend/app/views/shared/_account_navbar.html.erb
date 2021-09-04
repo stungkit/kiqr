@@ -1,0 +1,28 @@
+<div class="py-2 bg-white border-b border-1 border-gray-200">
+  <div class="flex justify-between max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 text-sm">
+  
+    <div class="flex flex-row items-center space-x-4 ">
+      <div data-controller="dropdown" class="relative">
+        <button data-action="click->dropdown#toggle" class="flex font-bold text-gray-500">
+          <%= current_account.name %>
+          <%= heroicon "chevron-down", options: { class: 'ml-1 h-5 w-5' } %>
+        </button>
+        <div data-dropdown-target="menu" class="hidden absolute sm:-ml-4 mt-1 z-50 min-w-max rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+          <!-- Active: "bg-gray-100", Not Active: "" -->
+          <% current_user.accounts.except(@account).each do |account| %>
+            <%= link_to account.name, switch_account_path(account), method: :patch, class: 'block px-4 py-2 text-sm text-gray-700 hover:text-purple-500' %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= link_to 'Create an organization', new_account_path, class: 'block text-gray-400 text-xs hover:text-purple-500' %>
+    </div>
+
+    <div class="flex flex-row items-center space-x-4 text-gray-500 text-xs">
+      <%= link_to 'Settings', edit_account_path, class: 'hover:text-purple-500' %>
+      <%= link_to 'Billing', '#', class: 'hover:text-purple-500' %>
+      <%= link_to 'Members', members_path, class: 'hover:text-purple-500' %>
+      <%= link_to 'Support', '#', class: 'hover:text-purple-500' %>
+    </div>
+  </div>
+</div>
