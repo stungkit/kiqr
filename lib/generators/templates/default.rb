@@ -62,6 +62,7 @@ after_bundle do
   generate('kiqr:install', 'user')
 
   # Kiqr_frontend install
+  run 'rm -rf app/views'
   generate('kiqr:frontend:install')
 end
 
