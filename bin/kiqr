@@ -1,25 +1,35 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-min_rails_version = '5.2.0'
+KIQR_VERSION = '0.0.2'
+MIN_RAILS_VERSION = '5.2.0'
 
-# Check that a supported Rails version is installed globally.
-rails_version = `rails -v`.gsub('Rails ', '')
-rails_version = Gem::Version.new(rails_version)
+def run_installer
+  # Check that a supported Rails version is installed globally.
+  rails_version = `rails -v`.gsub('Rails ', '')
+  rails_version = Gem::Version.new(rails_version)
 
-# This condition will also be true if Rails is not installed.
-if rails_version < Gem::Version.new(min_rails_version)
-  puts 'Please update your Rails version to 5.2.0 or higher!'
-  exit
+  # This condition will also be true if Rails is not installed.
+  if rails_version < Gem::Version.new(MIN_RAILS_VERSION)
+    puts 'Please update your Rails version to 5.2.0 or higher!'
+    exit
+  end
+
+  template_directory = File.expand_path('../lib/generators/templates', __dir__)
+
+  template_file = if ARGV[0] == 'sandbox'
+                    File.join(template_directory, 'sandbox.rb')
+                  else
+                    File.join(template_directory, 'default.rb')
+                  end
+
+  # Run default rails installer
+  system("rails new #{ARGV.join(' ')} -m #{template_file}")
 end
 
-template_directory = File.expand_path('../lib/generators/templates', __dir__)
-
-template_file = if ARGV[0] == 'sandbox'
-                  File.join(template_directory, 'sandbox.rb')
-                else
-                  File.join(template_directory, 'default.rb')
-                end
-
-# Run default rails installer
-system("rails new #{ARGV.join(' ')} -m #{template_file}")
+case ARGV.first
+when 'version', '-v', '--version'
+  puts "Kiqr #{KIQR_VERSION}"
+else
+  run_installer
+end
