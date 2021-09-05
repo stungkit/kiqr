@@ -1,4 +1,4 @@
-class CreateMembers < ActiveRecord::Migration[6.1]
+class CreateMembers < ActiveRecord::Migration[5.2]
   def change
     create_table :members do |t|
       t.belongs_to :user, foreign_key: { to_table: :users }
