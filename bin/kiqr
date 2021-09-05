@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-KIQR_VERSION = '0.0.2'
+KIQR_VERSION = '0.0.3'
 MIN_RAILS_VERSION = '5.2.0'
 
 # rubocop:disable Metrics/MethodLength

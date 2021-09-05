@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-KIQR_VERSION = '0.0.2'
+KIQR_VERSION = '0.0.3'
 
 # GEMFILE
 ########################################
