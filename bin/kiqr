@@ -4,6 +4,7 @@
 KIQR_VERSION = '0.0.2'
 MIN_RAILS_VERSION = '5.2.0'
 
+# rubocop:disable Metrics/MethodLength
 def run_installer
   # Check that a supported Rails version is installed globally.
   rails_version = `rails -v`.gsub('Rails ', '')
@@ -26,6 +27,7 @@ def run_installer
   # Run default rails installer
   system("rails new #{ARGV.join(' ')} -m #{template_file}")
 end
+# rubocop:enable Metrics/MethodLength
 
 case ARGV.first
 when 'version', '-v', '--version'

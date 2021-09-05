@@ -8,6 +8,8 @@ Kiqr
 
 Kiqr is an open-source starter kit and framework for creating SaaS applications with Ruby on Rails. You can generate a new application using our command tool or add Kiqr to an existing project.
 
+![Image of splash page](https://raw.githubusercontent.com/kiqr/kiqr/main/screenshots/1-splash.png)
+
 ## Getting Started
 - [Generate a new application](https://docs.kiqr.dev/getting-started/installation)
 - [Adding Kiqr to an existing application](https://docs.kiqr.dev/getting-started/existing-project)

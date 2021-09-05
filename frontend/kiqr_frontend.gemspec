@@ -20,6 +20,8 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = '>= 1.8.23'
 
   s.add_dependency 'heroicon', '~> 0.4.0'
+  s.add_dependency 'importmap-rails', '~> 0.5.0'
   s.add_dependency 'simple_form', '~> 5.1.0'
+  s.add_dependency 'stimulus-rails', '~> 0.4.2'
   s.add_dependency 'tailwindcss-rails-webpacker', '~> 0.1.2'
 end

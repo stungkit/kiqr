@@ -20,9 +20,8 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = '>= 1.8.23'
 
   s.add_dependency 'cancancan', '~> 3.3.0'
+  s.add_dependency 'devise', '~> 4.8'
   s.add_dependency 'dry-configurable', '~> 0.12.1'
   s.add_dependency 'responders', '~> 3.0.1'
   s.add_dependency 'valid_email2', '~> 4.0.0'
-
-  s.add_dependency 'devise', '~> 4.7'
 end

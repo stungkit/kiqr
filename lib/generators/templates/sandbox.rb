@@ -62,6 +62,7 @@ after_bundle do
   # Kiqr_frontend install
   run 'rm -rf app/views'
   generate('kiqr:frontend:install')
+  run 'rm -rf app/views' # Delete app/views again so we can develop via kiqr_frontend
 end
 
 run 'touch .env'
