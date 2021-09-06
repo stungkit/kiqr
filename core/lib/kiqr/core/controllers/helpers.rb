@@ -8,7 +8,8 @@ module Kiqr
 
       included do
         if respond_to?(:helper_method)
-          helpers = %w[account_signed_in? authenticate_account! current_account current_member current_subscription_plan member_of_account?]
+          helpers = %w[account_signed_in? authenticate_account! current_account current_member current_subscription_plan
+                       member_of_account?]
           helper_method(*helpers)
         end
       end
@@ -46,7 +47,7 @@ module Kiqr
         # by calling Devise authenticate_user! method.
         authenticate_user!
 
-        # Check if an account is signed in, but not if we're 
+        # Check if an account is signed in, but not if we're
         # on a DeviseController (user signup/registration etc)
         return if account_signed_in? || devise_controller?
 

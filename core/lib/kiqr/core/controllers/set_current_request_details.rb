@@ -15,19 +15,13 @@ module Kiqr
         Kiqr::Current.user ||= current_user
 
         # Account may already be set by the AccountMiddleware
-        Kiqr::Current.account ||= account_from_session || fallback_account || nil
+        Kiqr::Current.account ||= account_from_session || nil
       end
 
       def account_from_session
         return unless user_signed_in? && session[:account_id].present?
 
         current_user.accounts.find_by(id: session[:account_id])
-      end
-
-      def fallback_account
-        return unless user_signed_in?
-
-        current_user.account
       end
     end
   end

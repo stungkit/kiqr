@@ -8,7 +8,6 @@ module Kiqr
       included do
         has_many :members
         has_many :accounts, through: :members
-        belongs_to :account, optional: true
       end
     end
   end
