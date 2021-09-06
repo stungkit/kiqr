@@ -15,7 +15,7 @@ module Kiqr
         Kiqr::Current.user ||= current_user
 
         # Account may already be set by the AccountMiddleware
-        Kiqr::Current.account ||= account_from_session || fallback_account
+        Kiqr::Current.account ||= account_from_session || fallback_account || nil
       end
 
       def account_from_session
@@ -27,7 +27,7 @@ module Kiqr
       def fallback_account
         return unless user_signed_in?
 
-        current_user.account || current_user.create_default_account
+        current_user.account
       end
     end
   end

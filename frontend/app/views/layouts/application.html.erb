@@ -21,7 +21,7 @@
     <%= yield :head %>
   </head>
   <body class="bg-gray-50">
-    <%= render 'shared/account_navbar' %>
+    <%= render 'shared/account_navbar' if account_signed_in? %>
     <div class="sticky top-0">
       <%= render 'shared/navbar' %>
     </div>

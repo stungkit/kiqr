@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class KiqrController < Kiqr.config.parent_controller.constantize
-  before_action :authenticate_user!
+  before_action :authenticate_account!
   respond_to :html
 
   # Sets the flash message with :key, using I18n. By default you are able

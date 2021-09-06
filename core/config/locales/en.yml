@@ -5,6 +5,8 @@ en:
         create: Create account
         update: Update account
   kiqr:
+    misc:
+      account_setup_required: Get started by setting up your first account! 
     accounts:
       created: Your account was successfully created!
       after_setup: Your new account has been setup successfully!

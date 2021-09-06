@@ -16,8 +16,6 @@ module Kiqr
       # Make Kiqr controller helpers available in all app controllers.
       ActionController::Base.include(Kiqr::Controllers::SetCurrentRequestDetails)
       ActionController::Base.include(Kiqr::Controllers::Helpers)
-      ActionController::Base.include(Kiqr::Controllers::CurrentHelpers)
-      ActionController::Base.include(Kiqr::Controllers::ForceAccountSetup)
     end
   end
 end
