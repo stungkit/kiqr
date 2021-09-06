@@ -21,7 +21,7 @@ module Kiqr
     # POST /account
     def create
       @account = current_user.accounts.build(account_params.merge(owner: current_user))
-      @account.members.new(user: current_user)
+      @account.members.build(user: current_user)
 
       if @account.save
         set_flash_message(:notice, :created)
