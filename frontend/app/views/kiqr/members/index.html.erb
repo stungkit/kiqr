@@ -11,14 +11,14 @@
         <h2 class="text-xs text-gray-500">Manage users with access to this account</h2>
       </div>
       <div class="flex flex-col justify-center">
-        <%= link_to 'Invite a user', new_member_path, class: 'bg-purple-500 hover:bg-purple-700 transition text-white px-4 py-2 rounded-lg text-xs font-bold' if can?(Account, :create)%>
+        <%= link_to 'Invite a user', new_member_path, class: 'bg-purple-500 hover:bg-purple-700 transition text-white px-4 py-2 rounded-lg text-xs font-bold' if can?(:create, Account) %>
       </div>
     </div>
 
     <table class="table-auto w-full text-left">
       <thead>
         <tr class="border-b border-1 border-gray-200 bg-gray-50 text-purple-500 text-xs">
-          <th class="py-2 px-8">Email</th>
+          <th class="py-2 px-8">User</th>
           <th class="py-2 px-8">Role</th>
           <th class="py-2 px-8 text-right"></th>
         </tr>
@@ -27,7 +27,7 @@
         <% @members.each do |member| %>
         <tr class="border-b border-1 border-gray-200 text-sm">
           <td class="py-4 px-8">
-            <%= member.user.email %> 
+            <%= member.user %> 
             <%= '<span class="text-xs text-purple-500 ml-2">(You)</span>'.html_safe if member.user == current_user %>
             <%= '<span class="text-xs text-yellow-600 ml-2">(Owner)</span>'.html_safe if member.user == @account.owner %>
           </td>
@@ -35,7 +35,7 @@
             <%= member.role_name %>
           </td>
           <td class="py-4 px-8 text-right">
-            <%= link_to 'Edit', '', class: 'kiqr-action-button' %>
+            <%= link_to 'Edit', edit_member_path(member), class: 'kiqr-action-button' if can?(:update, member) %>
           </td>
         </tr>
         <% end %>

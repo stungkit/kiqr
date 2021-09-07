@@ -5,6 +5,7 @@ module Kiqr
     load_and_authorize_resource
 
     before_action :set_account
+    before_action :set_member, only: %i[edit update]
     helper_method :options_for_role
 
     # GET /account/members
@@ -19,10 +20,22 @@ module Kiqr
       respond_with(@member)
     end
 
+    # GET /account/members/:id/edit
+    def edit
+      respond_with(@member)
+    end
+
     # POST /account/members
     def create
-      @member = @account.members.new(member_params)
+      @member = @account.members.new(create_params)
       set_flash_message(:notice, :created) if @member.save
+      respond_with @member, location: members_path
+    end
+
+    # PATCH/PUT /account/members
+    def update
+      @member.update(update_params)
+      set_flash_message(:notice, :updated) if @account.errors.blank?
       respond_with @member, location: members_path
     end
 
@@ -38,8 +51,18 @@ module Kiqr
       @account = current_user.accounts.find(current_account.id)
     end
 
-    # Only allow a list of trusted parameters through.
-    def member_params
+    # Use callbacks to share common setup or constraints between actions.
+    def set_member
+      @member = @account.members.find(params[:id])
+    end
+
+    # Only allow a list of trusted create parameters through.
+    def create_params
+      params.require(:member).permit(:role, :invitee_email)
+    end
+
+    # Only allow a list of trusted update parameters through.
+    def update_params
       params.require(:member).permit(:role, :invitee_email)
     end
   end

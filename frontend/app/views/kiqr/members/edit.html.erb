@@ -7,12 +7,11 @@
   <div class="bg-white border border-1 border-gray-200 rounded-lg col-span-3">
     <div class="flex flex-col space-y-1 px-8 py-4 border-b border-1 border-gray-200">
       <h1 class="font-bold text-lg text-gray-700">Members</h1>
-      <h2 class="text-xs text-gray-500">Invite a new user to this account</h2>
+      <h2 class="text-xs text-gray-500">Edit permissions for <%= @member.user.to_s %></h2>
     </div>
 
-    <%= simple_form_for @member, url: members_path do |f| %>
+    <%= simple_form_for @member, url: member_path(@member) do |f| %>
       <%= f.input :role, as: :select, collection: options_for_role, include_blank: false %>
-      <%= f.input :invitee_email %>
       <%= f.submit class: 'kiqr-form-submit' %>
     <% end %>
   </div>

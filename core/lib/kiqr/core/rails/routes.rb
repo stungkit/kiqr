@@ -30,7 +30,7 @@ module ActionDispatch
       end
 
       def kiqr_members(_options)
-        resources :members, only: %i[index new create]
+        resources :members, only: %i[index new create edit update]
       end
     end
   end

@@ -3,13 +3,17 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(member, _subscription_plan)
+  def initialize(member, account, _subscription_plan)
     member ||= Member.new # guest member (not logged in)
 
     # By default, the user role 'member' has read-only
     # access while admin can manage everything:
     can :read, :all
     can :manage, :all if member.role?('admin')
+
+    # Admins can't update or destroy the owner of an account
+    cannot :update, Member, user_id: account.owner_id
+    cannot :destroy, Member, user_id: account.owner_id
 
     # Define your own abilities for the passed member here.
     #

@@ -66,7 +66,7 @@ module Kiqr
       # You can overwrite it in your ApplicationController if you
       # want to build a custom authorization strategy.
       def current_ability
-        @current_ability ||= Ability.new(current_member, current_subscription_plan)
+        @current_ability ||= Ability.new(current_member, current_account, current_subscription_plan)
       end
 
       # Current signed-in account. You can overwrite this by setting
