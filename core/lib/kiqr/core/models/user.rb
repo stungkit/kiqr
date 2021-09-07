@@ -9,6 +9,10 @@ module Kiqr
         has_many :members
         has_many :accounts, through: :members
       end
+
+      def to_s
+        email
+      end
     end
   end
 end
