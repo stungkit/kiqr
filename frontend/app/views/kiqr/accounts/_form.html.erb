@@ -1,5 +1,4 @@
 <%= simple_form_for @account, url: account_path do |f| %>
-  <%= f.input :personal, label: 'Type of account', as: :select, collection: [['Personal', true], ['Organization', false]], include_blank: false %>
   <%= f.input :name, label: 'Name your account', hint: 'Could be for example your personal name or the name of your organization' %>
   <%= f.input :billing_email, label: 'Billing email' %>
   <%= f.submit class: 'kiqr-form-submit' %>

@@ -54,7 +54,7 @@ module Kiqr
 
     # Only allow a list of trusted parameters through.
     def account_params
-      params.require(:account).permit(:name, :billing_email, :personal)
+      params.require(:account).permit(:name, :billing_email)
     end
   end
 end
