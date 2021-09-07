@@ -12,6 +12,13 @@ module Kiqr
                        member_of_account?]
           helper_method(*helpers)
         end
+
+        rescue_from CanCan::AccessDenied do
+          respond_to do |format|
+            format.html { redirect_back fallback_location: root_path, alert: I18n.t('kiqr.misc.access_denied') }
+            format.any { head :unauthorized }
+          end
+        end
       end
 
       # Returns true if current_account is set to an account.

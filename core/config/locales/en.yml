@@ -4,10 +4,16 @@ en:
       account:
         create: Create account
         update: Update account
+      member:
+        create: Send invite
+        update: Change permissions
   kiqr:
     misc:
-      account_setup_required: Get started by setting up your first account! 
+      account_setup_required: Get started by setting up your first account!
+      access_denied: You don't have access to do that. Contact your account administrator.
     accounts:
       created: Your account was successfully created!
       after_setup: Your new account has been setup successfully!
       updated: Settings successfully updated!
+    members:
+      created: The user was invited to join your account!

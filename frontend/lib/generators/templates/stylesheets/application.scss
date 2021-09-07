@@ -4,7 +4,7 @@
 
 @layer components {
   .kiqr-form-submit {
-    @apply mx-8 my-4 cursor-pointer text-xs text-white font-bold bg-purple-500 py-4 px-6 rounded-lg w-60 disabled:opacity-50;
+    @apply mx-8 my-4 cursor-pointer text-xs text-white font-bold bg-purple-500 hover:bg-purple-700 py-4 px-6 rounded-lg w-60 disabled:opacity-50;
   }
 
   .kiqr-sidebar-link {
@@ -17,5 +17,9 @@
 
   .kiqr-sidebar-link > span {
     @apply text-gray-500 text-sm;
+  }
+
+  .kiqr-action-button {
+    @apply text-xs cursor-pointer bg-gray-400 text-white py-2 px-4 rounded-lg font-bold hover:bg-gray-500 transition;
   }
 }

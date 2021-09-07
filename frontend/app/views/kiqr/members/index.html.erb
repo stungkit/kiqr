@@ -5,9 +5,14 @@
     <%= render 'shared/account_sidebar' %>
   </div>
   <div class="bg-white border border-1 border-gray-200 rounded-lg col-span-3">
-    <div class="flex flex-col space-y-1 px-8 py-4 border-b border-1 border-gray-200">
-      <h1 class="font-bold text-lg text-gray-700">Members</h1>
-      <h2 class="text-xs text-gray-500">Manage users in your organization</h2>
+    <div class="flex flex-row justify-between px-8 py-4 border-b border-1 border-gray-200">
+      <div class="flex flex-col space-y-1">
+        <h1 class="font-bold text-lg text-gray-700">Members</h1>
+        <h2 class="text-xs text-gray-500">Manage users with access to this account</h2>
+      </div>
+      <div class="flex flex-col justify-center">
+        <%= link_to 'Invite a user', new_member_path, class: 'bg-purple-500 hover:bg-purple-700 transition text-white px-4 py-2 rounded-lg text-xs font-bold' if can?(Account, :create)%>
+      </div>
     </div>
 
     <table class="table-auto w-full text-left">
@@ -22,13 +27,15 @@
         <% @members.each do |member| %>
         <tr class="border-b border-1 border-gray-200 text-sm">
           <td class="py-4 px-8">
-            <%= member.user.email %> <%= '<span class="text-xs text-purple-500 ml-2">(You)</span>'.html_safe if member.user == current_user %>
+            <%= member.user.email %> 
+            <%= '<span class="text-xs text-purple-500 ml-2">(You)</span>'.html_safe if member.user == current_user %>
+            <%= '<span class="text-xs text-yellow-600 ml-2">(Owner)</span>'.html_safe if member.user == @account.owner %>
           </td>
           <td class="py-4 px-8">
             <%= member.role_name %>
           </td>
           <td class="py-4 px-8 text-right">
-            <%= link_to 'Edit', '', class: 'text-xs bg-gray-400 text-white py-2 px-4 rounded-lg font-bold hover:bg-gray-500 transition' %>
+            <%= link_to 'Edit', '', class: 'kiqr-action-button' %>
           </td>
         </tr>
         <% end %>
