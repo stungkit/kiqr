@@ -50,13 +50,8 @@ module Kiqr
 
       # Redirects unless current_user has an account.
       def authenticate_account!
-        # First we need to make sure that a user is signed in
-        # by calling Devise authenticate_user! method.
-        authenticate_user!
-
-        # Check if an account is signed in, but not if we're
-        # on a DeviseController (user signup/registration etc)
-        return if account_signed_in? || devise_controller?
+        # Check if an account is signed in.
+        return if account_signed_in?
 
         redirect_to new_account_path, notice: I18n.t('kiqr.misc.account_setup_required')
       end

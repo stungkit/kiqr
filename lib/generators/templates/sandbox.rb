@@ -7,7 +7,7 @@ inject_into_file 'Gemfile', before: 'group :development, :test do' do
   # -------- Kiqr dependencies ---------
 
   # Required:
-  gem 'devise', '~> 4.8.0'
+  gem 'authenticatable', path: '../../authenticatable'
   gem 'kiqr_core', path: '..'
 
   # Addons (optional):
@@ -41,11 +41,6 @@ after_bundle do
   # Routes
   ########################################
   route "root to: 'pages#welcome'"
-
-  # Devise install + user
-  ########################################
-  generate('devise:install')
-  generate('devise', 'User')
 
   # App controller
   ########################################

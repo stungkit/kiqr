@@ -8,7 +8,6 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "rails/test_unit/railtie"
 
-require "devise"
 require "kiqr_core"
 
 # Require the gems listed in Gemfile, including any gems
