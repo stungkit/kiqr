@@ -51,6 +51,9 @@ after_bundle do
     end
   RUBY
 
+  # Authenticatable install
+  generate('authenticatable', 'user')
+
   # Kiqr install
   generate('kiqr:install')
 
