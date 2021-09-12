@@ -49,7 +49,7 @@ after_bundle do
     class ApplicationController < ActionController::Base
       #{  "protect_from_forgery with: :exception\n" if Rails.version < "5.2"}
       before_action :authenticate_user!
-      before_action :authenticate_account!, if: :user_signed_in?
+      before_action :authenticate_account!, if: :user_signed_in?, unless: :authenticatable_controller?
     end
   RUBY
 
