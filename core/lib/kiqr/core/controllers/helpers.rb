@@ -105,7 +105,7 @@ module Kiqr
       # :html & :turbo_stream should redirect and show flash messages,
       # but formats like :xml or :json, should return 401
       def navigational_format?
-        Kiqr.config.navigational_formats.include?(request_format)
+        Kiqr.config.navigational_formats.include?(request.format.try(:ref))
       end
     end
   end
