@@ -28,8 +28,9 @@
             <div class="text-center">
               <%= yield(:form_headers) %>
             </div>
-            <%= render 'shared/flash_messages' %>
-            <%= yield %>
+            <div class="mt-10">
+              <%= yield %>
+            </div>
           </div>
         </div>
       </div>

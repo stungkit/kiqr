@@ -1,0 +1,11 @@
+<div class="flex text-sm text-center text-gray-400 pt-6 flex-col space-y-1">
+
+  <% if current_scope.registrations? && controller_name != 'registrations' %>
+    <div>Don't have an account? <%= link_to 'Sign up', new_registration_path(resource_name), class: 'font-bold text-purple-500' %></div>
+  <% end %>
+
+  <% if current_scope.sessions? && controller_name != 'sessions' %>
+    <div>Already have an account? <%= link_to 'Sign in', new_session_path(resource_name), class: 'font-bold text-purple-500' %></div>
+  <% end %>
+
+</div>

@@ -1,0 +1,10 @@
+<% content_for :title, 'Create an account' %>
+
+<% content_for :form_headers do %>
+  <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">Sign up</h1>
+  <p class="text-gray-500 dark:text-gray-400">Sign up to access our platform</p>
+<% end %>
+
+<%= render 'form' %>
+
+<%= render 'authenticatable/shared/links' %>
