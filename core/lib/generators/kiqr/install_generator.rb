@@ -52,7 +52,7 @@ module Kiqr
       private
 
       def user_model_contents
-        '  include Kiqr::Models::User'
+        "  include Kiqr::Models::User\n"
       end
 
       def user_model_exists?
